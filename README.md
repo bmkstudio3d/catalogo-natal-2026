@@ -94,5 +94,5 @@ open index.html
 ---
 
 <p align="center">
-  Feito com impressão 3D por <strong>BMK Studio 3D</strong> — Ribeirão Preto/SP
+  Feito com impressão 3D por <strong>BMK Studio 3D</strong> — Araraquara/SP
 </p>
