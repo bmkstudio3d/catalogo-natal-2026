@@ -1,0 +1,2859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BMK Studio 3D — Catálogo Natal 2026</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --orange: #FF6B00;
+  --orange-dark: #cc5500;
+  --black: #1F1F1F;
+  --white: #FFFFFF;
+  --shadow: 0 8px 32px rgba(0,0,0,0.3);
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.18);
+  --radius: 20px;
+  --radius-sm: 14px;
+  --radius-pill: 50px;
+}
+
+html { scroll-behavior: auto; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ================================================================
+   SLIDE SYSTEM
+   ================================================================ */
+.slides-container {
+  display: flex;
+  height: 100vh;
+  width: 400vw;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  flex-shrink: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar styling */
+.slide::-webkit-scrollbar { width: 4px; }
+.slide::-webkit-scrollbar-track { background: transparent; }
+.slide::-webkit-scrollbar-thumb { background: rgba(255,107,0,0.3); border-radius: 4px; }
+
+/* ================================================================
+   SLIDE NAV
+   ================================================================ */
+.slide-nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+  background: rgba(31,31,31,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,107,0,0.2);
+}
+.slide-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s;
+  padding: 0;
+}
+.slide-dot.active {
+  background: var(--orange);
+  box-shadow: 0 0 12px rgba(255,107,0,0.5);
+  transform: scale(1.3);
+}
+.slide-arrows {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 8px;
+  pointer-events: none;
+}
+.slide-arrow {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255,107,0,0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.2);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s;
+  font-size: 1.6rem;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(255,107,0,0.4);
+}
+.slide-arrow:hover { background: var(--orange); color: var(--white); transform: scale(1.15); box-shadow: 0 6px 28px rgba(255,107,0,0.5); }
+.slide-arrow.hidden { opacity: 0; pointer-events: none; }
+
+/* Swipe hint on cover */
+.swipe-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: auto;
+  animation: hintPulse 2s ease-in-out infinite;
+  cursor: pointer;
+  transition: opacity 0.5s;
+  position: relative;
+  z-index: 2;
+}
+.swipe-hint.hide { display: none; }
+.swipe-hint__text {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.swipe-hint__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 1.4rem;
+  box-shadow: 0 4px 24px rgba(255,107,0,0.5);
+  animation: hintBounce 1.5s ease-in-out infinite;
+}
+@keyframes hintPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes hintBounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.3; }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.anim-up { animation: fadeInUp 0.7s ease-out both; }
+.anim-down { animation: fadeInDown 0.6s ease-out both; }
+.anim-scale { animation: fadeInScale 0.6s ease-out both; }
+.anim-left { animation: slideInLeft 0.7s ease-out both; }
+.anim-right { animation: slideInRight 0.7s ease-out both; }
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.2s; }
+.d3 { animation-delay: 0.3s; }
+.d4 { animation-delay: 0.4s; }
+.d5 { animation-delay: 0.5s; }
+.d6 { animation-delay: 0.6s; }
+.d7 { animation-delay: 0.7s; }
+.d8 { animation-delay: 0.8s; }
+
+/* Only animate when slide is active */
+.slide:not(.slide--active) .anim-up,
+.slide:not(.slide--active) .anim-down,
+.slide:not(.slide--active) .anim-scale,
+.slide:not(.slide--active) .anim-left,
+.slide:not(.slide--active) .anim-right {
+  animation: none;
+  opacity: 0;
+}
+
+/* ================================================================
+   CHRISTMAS DECORATIVE SVG ELEMENTS
+   ================================================================ */
+.xmas-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+.xmas-deco svg { width: 100%; height: 100%; }
+
+.xmas-star { animation: float 4s ease-in-out infinite; }
+.xmas-snowflake { animation: spin 12s linear infinite; }
+.xmas-ornament { animation: floatSlow 5s ease-in-out infinite; }
+.xmas-shimmer { animation: shimmer 3s ease-in-out infinite; }
+.xmas-gift { animation: floatSlow 6s ease-in-out infinite; }
+
+/* ================================================================
+   GLOW EFFECTS
+   ================================================================ */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ================================================================
+   PILL / TAG
+   ================================================================ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pill--orange { background: var(--orange); color: var(--white); }
+.pill--outline { background: transparent; border: 1.5px solid var(--orange); color: var(--orange); }
+.pill--dark { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); backdrop-filter: blur(8px); }
+
+/* ================================================================
+   BUTTONS
+   ================================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(255,107,0,0.3); }
+.btn:active { transform: translateY(0); }
+.btn--orange { background: linear-gradient(135deg, var(--orange), var(--orange-dark)); color: var(--white); }
+.btn--white { background: var(--white); color: var(--black); }
+.btn--ghost { background: rgba(255,255,255,0.08); color: var(--white); border: 1.5px solid rgba(255,255,255,0.15); }
+.btn--ghost:hover { background: rgba(255,107,0,0.15); border-color: var(--orange); }
+.btn--sm { padding: 8px 16px; font-size: 0.65rem; gap: 6px; }
+.btn svg { flex-shrink: 0; }
+
+/* WhatsApp mini button on cards */
+.card-wa {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: #25D366;
+  color: var(--white);
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+  letter-spacing: 0.02em;
+  margin-top: 6px;
+  width: fit-content;
+}
+.card-wa:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(37,211,102,0.3); }
+.card-wa svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+/* ================================================================
+   PAGE 1 — CAPA
+   ================================================================ */
+.cover {
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 32px 24px 80px;
+  position: relative;
+}
+
+.cover__logo { width: 180px; margin-bottom: 14px; margin-top: auto; position: relative; z-index: 2; }
+.cover__logo svg { width: 100%; height: auto; }
+
+.cover__title {
+  font-size: clamp(2.6rem, 10vw, 5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 2;
+}
+.cover__title span { color: var(--orange); }
+
+.cover__subtitle {
+  font-size: clamp(0.7rem, 2vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-top: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.cover__showcase {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  margin: 24px auto 16px;
+}
+.cover__hero-img {
+  width: 60%;
+  max-width: 240px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: block;
+  margin: 0 auto;
+}
+.cover__float {
+  position: absolute;
+  width: 28%;
+  max-width: 100px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  border: 3px solid var(--black);
+  animation: floatSlow 4s ease-in-out infinite;
+}
+.cover__float--1 { top: 2%; left: 2%; transform: rotate(-5deg); animation-delay: 0s; }
+.cover__float--2 { top: 5%; right: 2%; transform: rotate(4deg); animation-delay: 1.5s; }
+.cover__float--3 { bottom: -5%; left: 8%; transform: rotate(-2deg); animation-delay: 0.8s; }
+
+.cover__tagline {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  margin-top: 12px;
+  position: relative;
+  z-index: 2;
+}
+.cover__count {
+  font-size: 0.75rem;
+  color: var(--orange);
+  font-weight: 700;
+  margin-top: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.cover__cta { margin-top: 20px; position: relative; z-index: 2; }
+.cover__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 14px;
+  position: relative;
+  z-index: 2;
+}
+.cover__contact a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+}
+.cover__contact a:hover { color: var(--orange); }
+
+.cover__footer {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================================================================
+   DISCOUNT TICKER
+   ================================================================ */
+.discount-ticker {
+  width: 100%;
+  overflow: hidden;
+  background: var(--orange);
+  padding: 6px 0;
+  position: relative;
+  z-index: 3;
+  margin-bottom: 8px;
+}
+.discount-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 18s linear infinite;
+}
+.discount-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  padding: 0 32px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.discount-ticker__item span {
+  font-size: 0.85rem;
+}
+.discount-ticker__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  display: inline-block;
+}
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ================================================================
+   PRODUCTS PAGE
+   ================================================================ */
+.products-page {
+  background: var(--black);
+  padding: 0 16px 100px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+.page-header__title {
+  font-size: clamp(1.5rem, 5.5vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.page-header__title span { color: var(--orange); }
+.page-header__sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-top: 5px;
+}
+.page-header__count { margin-top: 8px; }
+.page-header__desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Product grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 540px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Product card */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: var(--black);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+.card { cursor: pointer; }
+
+/* Card popup overlay */
+.card-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+  padding: 24px;
+}
+.card-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.card-overlay__inner {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: var(--black);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  max-width: 340px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: scale(0.85) translateY(30px);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-overlay.active .card-overlay__inner {
+  transform: scale(1) translateY(0);
+}
+.card-overlay__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: var(--white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2001;
+  transition: background 0.2s;
+}
+.card-overlay__close:hover { background: rgba(255,107,0,0.5); }
+.card-overlay__img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+.card-overlay__body {
+  padding: 16px 20px 20px;
+}
+.card-overlay__code {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 8px;
+}
+.card-overlay__name {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.card-overlay__desc {
+  font-size: 0.75rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.card-overlay__price {
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+.card-overlay__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+.card-overlay__add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--radius-pill);
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.card-overlay__add-btn:hover { background: var(--orange-dark); transform: translateY(-2px); }
+.card-overlay__wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(37,211,102,0.12);
+  color: #25d366;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 1.5px solid rgba(37,211,102,0.25);
+}
+.card-overlay__wa:hover { background: #25d366; color: var(--white); }
+.card-overlay__wa svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ================================================================
+   KIT BUILDER
+   ================================================================ */
+.kit-builder {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(255,107,0,0.08), rgba(255,107,0,0.02));
+  border: 1.5px solid rgba(255,107,0,0.25);
+  border-radius: var(--radius);
+  padding: 20px 12px 24px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.kit-builder__header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.kit-builder__title {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--white);
+}
+.kit-builder__title span { color: var(--orange); }
+.kit-builder__sub {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+}
+.kit-builder__example {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.kit-builder__example-img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: var(--radius);
+  margin: 0 auto;
+}
+.kit-builder__example-caption {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 6px;
+  font-style: italic;
+}
+.kit-builder__tiers {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.kit-tier {
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s;
+}
+.kit-tier.active {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+  box-shadow: 0 2px 12px rgba(255,107,0,0.3);
+}
+.kit-builder__section-title {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.kit-builder__bandeja-fixa {
+  margin-bottom: 14px;
+}
+.kit-builder__bandeja-fixa .kit-item {
+  cursor: default;
+  border-color: var(--orange);
+  background: rgba(255,107,0,0.1);
+}
+.kit-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.25s;
+  min-width: 0;
+  overflow: hidden;
+}
+.kit-item:hover { border-color: rgba(255,107,0,0.3); }
+.kit-item.selected {
+  border-color: var(--orange);
+  background: rgba(255,107,0,0.1);
+}
+.kit-item__img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.kit-item__info { flex: 1; min-width: 0; }
+.kit-item__name {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.kit-item__price-tag {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+}
+.kit-item__check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s;
+  font-size: 0.65rem;
+  color: transparent;
+}
+.kit-item.selected .kit-item__check {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: var(--white);
+}
+.kit-builder__produtos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+@media (min-width: 400px) {
+  .kit-builder__produtos { grid-template-columns: 1fr 1fr; }
+  .kit-builder__produtos .kit-item:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
+}
+.kit-builder__qty {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.kit-qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.kit-qty-btn:hover { border-color: var(--orange); background: rgba(255,107,0,0.15); }
+.kit-qty-btn.disabled { opacity: 0.2; pointer-events: none; }
+.kit-qty-val {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--white);
+  min-width: 16px;
+  text-align: center;
+}
+.kit-builder__summary {
+  background: rgba(0,0,0,0.3);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  text-align: center;
+}
+.kit-summary__items {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+}
+.kit-summary__original {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+  text-decoration: line-through;
+}
+.kit-summary__discount-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 800;
+  background: #25d366;
+  color: var(--white);
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  margin-left: 6px;
+}
+.kit-summary__total {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--orange);
+  margin: 6px 0;
+}
+.kit-summary__economy {
+  font-size: 0.6rem;
+  color: #25d366;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.kit-summary__cart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.kit-summary__cart-btn.enabled {
+  opacity: 1;
+  pointer-events: auto;
+}
+.kit-summary__cart-btn.enabled:hover { background: var(--orange-dark); transform: translateY(-2px); }
+.kit-summary__cart-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.kit-summary__added {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #25d366;
+  margin-top: 4px;
+}
+.kit-summary__hint {
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 8px;
+}
+
+/* ================================================================
+   CARD QUANTITY SELECTOR
+   ================================================================ */
+.card-qty {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+.card-qty__btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #ddd;
+  background: transparent;
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.card-qty__btn:hover { border-color: var(--orange); color: var(--orange); }
+.card-qty__val {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--black);
+  min-width: 20px;
+  text-align: center;
+}
+.card-qty__add {
+  flex: 1;
+  padding: 8px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.card-qty__add:hover { background: var(--orange-dark); }
+.card-qty__controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+.card-qty__controls .card-qty__btn {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.card-added-badge {
+  font-size: 0.5rem;
+  color: #25d366;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2px;
+}
+
+/* ================================================================
+   FLOATING CART
+   ================================================================ */
+.floating-cart {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  z-index: 1500;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 28px rgba(255,107,0,0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+.floating-cart.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.floating-cart:hover { transform: scale(1.1); box-shadow: 0 8px 36px rgba(255,107,0,0.6); }
+.floating-cart svg { width: 24px; height: 24px; }
+/* Cart toast notification */
+.cart-toast {
+  position: fixed;
+  bottom: 145px;
+  right: 16px;
+  z-index: 1600;
+  background: var(--black);
+  border: 1.5px solid rgba(255,107,0,0.3);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  max-width: 260px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+  pointer-events: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.cart-toast.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.cart-toast__text {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.4;
+}
+.cart-toast__text span { color: var(--orange); }
+.cart-toast__text .green { color: #25d366; }
+
+/* Cart celebration burst */
+.cart-celebration {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  z-index: 1550;
+  pointer-events: none;
+}
+.cart-celebration.active .confetti {
+  animation: confettiBurst 0.8s ease-out forwards;
+}
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0;
+}
+@keyframes confettiBurst {
+  0% { opacity: 1; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: var(--confetti-end) scale(0.3); }
+}
+
+/* Celebration flash on cart button */
+.floating-cart.celebrate {
+  animation: cartCelebrate 0.6s ease-out;
+}
+@keyframes cartCelebrate {
+  0% { transform: scale(1); box-shadow: 0 6px 28px rgba(255,107,0,0.5); }
+  30% { transform: scale(1.3); box-shadow: 0 0 40px rgba(37,211,102,0.6), 0 0 80px rgba(37,211,102,0.3); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); box-shadow: 0 6px 28px rgba(255,107,0,0.5); }
+}
+
+.floating-cart__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #25d366;
+  color: var(--white);
+  font-size: 0.65rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--black);
+}
+
+/* ================================================================
+   CART OVERLAY
+   ================================================================ */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2500;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.cart-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.cart-panel {
+  background: var(--black);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-bottom: none;
+  width: 100%;
+  max-width: 420px;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  padding: 20px 16px 24px;
+}
+.cart-overlay.active .cart-panel {
+  transform: translateY(0);
+}
+.cart-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.cart-panel__title {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--white);
+}
+.cart-panel__title span { color: var(--orange); }
+.cart-panel__close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-panel__close:hover { background: rgba(255,107,0,0.2); }
+.cart-panel__empty {
+  text-align: center;
+  padding: 32px 0;
+  color: rgba(255,255,255,0.3);
+  font-size: 0.75rem;
+}
+.cart-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cart-line__img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.cart-line__info { flex: 1; min-width: 0; }
+.cart-line__name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cart-line__unit {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.35);
+}
+.cart-line__components {
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+  margin: 2px 0;
+}
+.cart-line__kit-discount {
+  color: #25d366;
+  font-weight: 700;
+}
+.cart-line--kit {
+  border-left: 2px solid var(--orange);
+  padding-left: 8px;
+}
+.cart-line__qty {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cart-line__qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: transparent;
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.cart-line__qty-btn:hover { border-color: var(--orange); }
+.cart-line__qty-val {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--white);
+  min-width: 16px;
+  text-align: center;
+}
+.cart-line__subtotal {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--orange);
+  min-width: 60px;
+  text-align: right;
+}
+.cart-panel__totals {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1.5px solid rgba(255,107,0,0.2);
+}
+.cart-totals__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+}
+.cart-totals__row--discount {
+  color: #25d366;
+  font-weight: 700;
+}
+.cart-totals__row--total {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--white);
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.cart-totals__row--total span { color: var(--orange); }
+.cart-discount-badge {
+  display: inline-block;
+  background: #25d366;
+  color: var(--white);
+  font-size: 0.55rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  margin-left: 6px;
+}
+.cart-discount-hint {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  margin-top: 8px;
+  font-weight: 600;
+}
+.cart-panel__wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-pill);
+  background: #25d366;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-top: 14px;
+}
+.cart-panel__wa:hover { background: #1fb855; }
+.cart-panel__wa svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+.card__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+.card:hover .card__img { transform: scale(1.05); }
+
+.card__code {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.55rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.05em;
+}
+
+.card__body {
+  padding: 10px 12px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card__name {
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+.card__desc {
+  font-size: 0.58rem;
+  color: #777;
+  line-height: 1.4;
+  flex: 1;
+  margin-bottom: 6px;
+}
+.card__price {
+  background: var(--orange);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  line-height: 1.3;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Center lone card in odd grids */
+.card--center {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 7px);
+  justify-self: center;
+}
+
+/* Wide card */
+.card--wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.card--wide .card__img-wrap { aspect-ratio: auto; min-height: 180px; }
+.card--wide .card__body { justify-content: center; padding: 14px 18px; }
+.card--wide .card__name { font-size: 0.85rem; }
+.card--wide .card__desc { font-size: 0.62rem; }
+.card--wide .card__price { font-size: 0.85rem; }
+
+/* ================================================================
+   CLOSING SECTION
+   ================================================================ */
+.closing {
+  text-align: center;
+  padding: 36px 24px 20px;
+  position: relative;
+  z-index: 2;
+}
+.closing__title {
+  font-size: clamp(1.3rem, 5vw, 1.8rem);
+  font-weight: 900;
+}
+.closing__title span { color: var(--orange); }
+.closing__sub {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 8px;
+  font-weight: 500;
+}
+.closing__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Lojista section */
+.lojista {
+  text-align: center;
+  margin-top: 28px;
+  padding: 20px;
+  background: rgba(255,107,0,0.06);
+  border: 1px solid rgba(255,107,0,0.15);
+  border-radius: var(--radius);
+  position: relative;
+  z-index: 2;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.lojista__icon { margin-bottom: 8px; }
+.lojista__icon svg { width: 28px; height: 28px; }
+.lojista__title { font-size: 0.85rem; font-weight: 800; color: var(--orange); }
+.lojista__text { font-size: 0.7rem; color: rgba(255,255,255,0.55); margin-top: 4px; line-height: 1.5; }
+.lojista__btn { margin-top: 12px; }
+
+/* CTA cards grid */
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 400px;
+  margin: 16px auto 0;
+  position: relative;
+  z-index: 2;
+}
+.cta-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 16px 12px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.cta-card:hover { background: rgba(255,107,0,0.08); border-color: rgba(255,107,0,0.2); }
+.cta-card__icon { margin-bottom: 6px; }
+.cta-card__icon svg { width: 24px; height: 24px; }
+.cta-card__title { font-size: 0.75rem; font-weight: 800; color: var(--white); margin-bottom: 3px; }
+.cta-card__text { font-size: 0.6rem; color: rgba(255,255,255,0.45); line-height: 1.4; margin-bottom: 8px; }
+.cta-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.cta-card__link:hover { color: var(--white); }
+
+/* ================================================================
+   PAGE FOOTER
+   ================================================================ */
+.page-footer {
+  text-align: center;
+  padding: 20px 16px 16px;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 20px;
+}
+.page-footer__links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.page-footer__links a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+}
+.page-footer__links a:hover { color: var(--orange); }
+.page-footer__note {
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.page-footer__section-title {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (min-width: 480px) {
+  .cover__logo { width: 220px; }
+  .product-grid { gap: 18px; }
+  .card__name { font-size: 0.78rem; }
+}
+@media (min-width: 768px) {
+  .products-page { padding: 0 32px 100px; }
+  .product-grid { max-width: 640px; gap: 22px; }
+  .cover__logo { width: 260px; }
+  .card__body { padding: 12px 14px 14px; }
+  .card__name { font-size: 0.82rem; }
+  .slide-arrows { padding: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Slide Navigation Dots -->
+<nav class="slide-nav">
+  <button class="slide-dot active" data-slide="0"></button>
+  <button class="slide-dot" data-slide="1"></button>
+  <button class="slide-dot" data-slide="2"></button>
+  <button class="slide-dot" data-slide="3"></button>
+</nav>
+
+<!-- Slide Arrows -->
+<div class="slide-arrows">
+  <button class="slide-arrow hidden" id="prevBtn">‹</button>
+  <button class="slide-arrow" id="nextBtn">›</button>
+</div>
+
+<!-- ============================================================
+     SLIDES CONTAINER
+     ============================================================ -->
+<div class="slides-container" id="slidesContainer">
+
+<!-- ============================================================
+     SLIDE 1 — CAPA
+     ============================================================ -->
+<section class="slide slide--active cover" data-index="0">
+  <!-- Glows -->
+  <div class="glow" style="width:300px;height:300px;background:rgba(255,107,0,0.1);top:-80px;right:-80px;"></div>
+  <div class="glow" style="width:200px;height:200px;background:rgba(255,107,0,0.07);bottom:15%;left:-60px;"></div>
+
+  <!-- Christmas decorations -->
+  <div class="xmas-deco xmas-star" style="top:8%;left:6%;width:28px;height:28px;opacity:0.3;">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6.4 4.8L8 14l-6-4.8h7.6z" fill="#FF6B00"/></svg>
+  </div>
+  <div class="xmas-deco xmas-snowflake" style="top:14%;right:8%;width:22px;height:22px;opacity:0.15;">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+  <div class="xmas-deco xmas-ornament" style="bottom:28%;right:6%;width:20px;height:20px;opacity:0.25;animation-delay:1s;">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14" r="8" fill="#FF6B00" opacity="0.5"/><rect x="10" y="4" width="4" height="4" rx="1" fill="#FF6B00" opacity="0.5"/></svg>
+  </div>
+  <div class="xmas-deco xmas-star" style="bottom:22%;left:8%;width:16px;height:16px;opacity:0.2;animation-delay:2s;">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6.4 4.8L8 14l-6-4.8h7.6z" fill="#fff"/></svg>
+  </div>
+  <div class="xmas-deco xmas-gift" style="top:35%;left:3%;width:24px;height:24px;opacity:0.12;animation-delay:0.5s;">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="12" rx="2" fill="#FF6B00"/><rect x="2" y="7" width="20" height="4" rx="1" fill="#FF6B00" opacity="0.7"/><line x1="12" y1="7" x2="12" y2="22" stroke="#fff" stroke-width="1.5"/><path d="M12 7c-2-3-5-4-5-4s3-1 5 4zm0 0c2-3 5-4 5-4s-3-1-5 4z" stroke="#fff" stroke-width="1"/></svg>
+  </div>
+  <div class="xmas-deco xmas-shimmer" style="top:50%;right:12%;width:6px;height:6px;opacity:0.5;animation-delay:1.5s;">
+    <svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#FF6B00"/></svg>
+  </div>
+  <div class="xmas-deco xmas-shimmer" style="top:60%;left:10%;width:4px;height:4px;opacity:0.4;animation-delay:2.5s;">
+    <svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#fff"/></svg>
+  </div>
+
+  <!-- Logo -->
+  <div class="cover__logo anim-down">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 100" role="img" aria-label="BMK Studio"><title>BMK Studio</title><path d="M0 4Q0 0 4 0L77 0C91 0 101 9 101 23L101 31C101 37.5 99.5 42 96.5 45.5C101.5 49.5 104.5 55.5 104.5 63L104.5 75C104.5 90 94 100 79 100L5 100Q0 100 0 95L0 90.2Q22 96.2 56 95.6Q22 94 0 87.4L0 79.6Q21 88.4 54 88.2Q21 86.2 0 76.8L0 67.2Q19 78.6 50 80L77 80Q85 80 85 72L85 66Q85 58 77 58L34 58L38.5 38L74 38Q82 38 82 30L82 27Q82 19 74 19L19 19L19 70Q9 67.6 0 63Z" fill="#FF6B00"/><path d="M121.5 100Q119 100 119 97.5L119 2.5Q119 0 121.5 0L137 0Q138.5 0 139.48 1.14L175.72 43.09Q176.5 44 177.28 43.09L213.52 1.14Q214.5 0 216 0L231.5 0Q234 0 234 2.5L234 97.5Q234 100 231.5 100L217.5 100Q215 100 215 97.5L215 25L178.46 67.23Q176.5 69.5 174.54 67.23L138 25L138 97.5Q138 100 135.5 100ZM252 2.5Q252 0 254.5 0L268.9 0Q271.4 0 271.4 2.5L271.4 41.6L311.94 1.06Q313 0 314.5 0L339.1 0Q340.6 0 339.54 1.06L271.4 69.2L271.4 97.5Q271.4 100 268.9 100L254.5 100Q252 100 252 97.5ZM277.8 62.8L281.05 59.55L321.5 100L315 100ZM282.55 58.05L285.8 54.8L331 100L324.5 100ZM287.3 53.3L290.55 50.05L340.5 100L334 100ZM292.05 48.55L295.3 45.3L350 100L343.5 100Z" fill="#FFFFFF"/></svg>
+  </div>
+
+  <span class="pill pill--outline anim-scale d1">✦ Catálogo Especial</span>
+
+  <h1 class="cover__title anim-up d2"><span>Natal</span><br>2026</h1>
+  <p class="cover__subtitle anim-up d3">Detalhes que fazem a magia acontecer</p>
+
+  <div class="cover__showcase anim-scale d4">
+    <img src="Catálogo/4684-letreiro-feliz-natal.jpg" alt="Letreiro Feliz Natal" class="cover__hero-img" loading="lazy">
+    <img src="Catálogo/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="cover__float cover__float--1" loading="lazy">
+    <img src="Catálogo/3625-presepio-sagrada-familia.jpg" alt="Presépio" class="cover__float cover__float--2" loading="lazy">
+    <img src="Catálogo/8949-rena-natal-pequena-trico.jpg" alt="Rena Tricô" class="cover__float cover__float--3" loading="lazy">
+  </div>
+
+  <p class="cover__tagline anim-up d5">Feito para presentear, decorar e celebrar.</p>
+  <p class="cover__count anim-up d6">17 criações para deixar seu Natal ainda mais especial</p>
+
+  <div class="cover__cta anim-up d7">
+    <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Vi%20o%20cat%C3%A1logo%20de%20Natal%202026%20da%20BMK%20Studio%20e%20quero%20saber%20mais!" class="btn btn--orange" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Faça seu Pedido
+    </a>
+  </div>
+
+  <div class="cover__contact anim-up d8">
+    <a href="https://wa.me/5516997086377" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      (16) 99708-6377
+    </a>
+    <a href="https://instagram.com/bmkstudio3d" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      @bmkstudio3d
+    </a>
+  </div>
+
+  <p class="cover__footer anim-up d8">Imagens ilustrativas</p>
+
+  <!-- Swipe Hint -->
+  <div class="swipe-hint anim-up d8" id="swipeHint" onclick="goTo(1)">
+    <span class="swipe-hint__text">Deslize para ver os produtos</span>
+    <span class="swipe-hint__arrow">›</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 2 — COLEÇÃO 01
+     ============================================================ -->
+<section class="slide products-page" data-index="1">
+  <div class="glow" style="width:350px;height:180px;background:rgba(255,107,0,0.07);top:-50px;left:50%;transform:translateX(-50%);"></div>
+
+  <!-- Christmas deco -->
+  <div class="xmas-deco xmas-star" style="top:3%;right:10%;width:22px;height:22px;opacity:0.2;">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6.4 4.8L8 14l-6-4.8h7.6z" fill="#FF6B00"/></svg>
+  </div>
+  <div class="xmas-deco xmas-ornament" style="top:12%;left:5%;width:18px;height:18px;opacity:0.15;animation-delay:0.5s;">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14" r="8" fill="#FF6B00" opacity="0.6"/><rect x="10" y="4" width="4" height="4" rx="1" fill="#FF6B00" opacity="0.6"/></svg>
+  </div>
+  <div class="xmas-deco xmas-snowflake" style="bottom:12%;right:5%;width:20px;height:20px;opacity:0.1;">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+  <div class="xmas-deco xmas-shimmer" style="top:40%;left:3%;width:5px;height:5px;opacity:0.35;animation-delay:1s;">
+    <svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#FF6B00"/></svg>
+  </div>
+  <div class="xmas-deco xmas-gift" style="bottom:8%;left:8%;width:20px;height:20px;opacity:0.1;animation-delay:2s;">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="12" rx="2" fill="#fff"/><rect x="2" y="7" width="20" height="4" rx="1" fill="#fff" opacity="0.7"/><line x1="12" y1="7" x2="12" y2="22" stroke="#FF6B00" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="discount-ticker">
+    <div class="discount-ticker__track">
+      <span class="discount-ticker__item"><span>🎄</span> Compre 3 peças e ganhe 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎁</span> 5 peças ou mais = 30% de desconto! <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>⭐</span> Kit Natal: Bandeja + 2 peças = 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎄</span> Compre 3 peças e ganhe 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎁</span> 5 peças ou mais = 30% de desconto! <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>⭐</span> Kit Natal: Bandeja + 2 peças = 20% OFF <span class="discount-ticker__dot"></span></span>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <div class="anim-down"><span class="pill pill--dark">Pág. 2</span></div>
+    <h2 class="page-header__title anim-up d1">Natal em <span>cada detalhe</span></h2>
+    <p class="page-header__sub anim-up d2">Coleção Natal 2026</p>
+    <div class="page-header__count anim-scale d3"><span class="pill pill--orange">06 Peças Selecionadas</span></div>
+    <p class="page-header__desc anim-up d4">Encontre o detalhe perfeito para celebrar.</p>
+  </header>
+
+  <div class="product-grid">
+    <!-- 1. Anéis de Guardanapo -->
+    <article class="card anim-up d2">
+      <div class="card__img-wrap">
+        <img src="Catálogo/0415-aneis-guardanapo-natal.jpg" alt="Anéis de Guardanapo Natal" class="card__img" loading="lazy">
+        <span class="card__code">0415</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Anéis de Guardanapo Natal</h3>
+        <p class="card__desc">Conjunto de 6 anéis com boneco de neve, estrela, Papai Noel, presente, rena e flocos. Perfeitos para a mesa da ceia.</p>
+        <span class="card__price">R$ 13,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20An%C3%A9is%20de%20Guardanapo%20Natal%20(C%C3%B3digo%3A%200415)." class="card-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero esse!
+        </a>
+      </div>
+    </article>
+
+    <!-- 2. Jesus -->
+    <article class="card anim-up d3">
+      <div class="card__img-wrap">
+        <img src="Catálogo/2005-jesus.jpg" alt="Jesus" class="card__img" loading="lazy">
+        <span class="card__code">2005</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Jesus</h3>
+        <p class="card__desc">Miniatura decorativa de Jesus com túnica branca e cabelos castanhos. Peça vendida individualmente. Ideal para presépios e decoração cristã.</p>
+        <span class="card__price">R$ 10,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Jesus%20(C%C3%B3digo%3A%202005)." class="card-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero esse!
+        </a>
+      </div>
+    </article>
+
+    <!-- 3. Papai Noel Tricô -->
+    <article class="card anim-up d4">
+      <div class="card__img-wrap">
+        <img src="Catálogo/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="card__img" loading="lazy">
+        <span class="card__code">3225</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Papai Noel Tricô</h3>
+        <p class="card__desc">Papai Noel em estilo amigurumi com textura de tricô, nas cores vermelha e branca e botinhas pretas. Fofo e compacto.</p>
+        <span class="card__price">R$ 12,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Papai%20Noel%20Tric%C3%B4%20(C%C3%B3digo%3A%203225)." class="card-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero esse!
+        </a>
+      </div>
+    </article>
+
+    <!-- 4. Presépio Sagrada Família -->
+    <article class="card anim-up d5">
+      <div class="card__img-wrap">
+        <img src="Catálogo/3625-presepio-sagrada-familia.jpg" alt="Presépio Sagrada Família" class="card__img" loading="lazy">
+        <span class="card__code">3625</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Presépio Sagrada Família</h3>
+        <p class="card__desc">Presépio minimalista em tom marfim com Maria, José e o Menino Jesus em linhas suaves e elegantes.</p>
+        <span class="card__price">R$ 21,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Pres%C3%A9pio%20Sagrada%20Fam%C3%ADlia%20(C%C3%B3digo%3A%203625)." class="card-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero esse!
+        </a>
+      </div>
+    </article>
+
+    <!-- 5. Biscoito de Gengibre -->
+    <article class="card anim-up d6">
+      <div class="card__img-wrap">
+        <img src="Catálogo/3639-biscoito-gengibre-personalizado.jpg" alt="Biscoito de Gengibre Personalizado" class="card__img" loading="lazy">
+        <span class="card__code">3639</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Biscoito de Gengibre Personalizado</h3>
+        <p class="card__desc">Enfeite com gorro de Papai Noel, detalhes em glacê e flor natalina. Personalizável com nome e ano (2026).</p>
+        <span class="card__price">R$ 11,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Biscoito%20de%20Gengibre%20Personalizado%20(C%C3%B3digo%3A%203639)." class="card-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero esse!
+        </a>
+      </div>
+    </article>
+
+    <!-- 6. Boneco de Gengibre Tricô -->
+    <article class="card anim-up d7">
+      <div class="card__img-wrap">
+        <img src="Catálogo/4230-boneco-gengibre-trico.jpg" alt="Boneco de Gengibre Tricô" class="card__img" loading="lazy">
+        <span class="card__code">4230</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Boneco de Gengibre Tricô</h3>
+        <p class="card__desc">Boneco sentado em estilo amigurumi, com textura de tricô, glacê branco e botões vermelhos. Charmoso e aconchegante.</p>
+        <span class="card__price">R$ 8,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Boneco%20de%20Gengibre%20Tric%C3%B4%20(C%C3%B3digo%3A%204230)." class="card-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero esse!
+        </a>
+      </div>
+    </article>
+  </div>
+
+  <footer class="page-footer">
+    <p class="page-footer__section-title">Pedidos e Informações</p>
+    <div class="page-footer__links">
+      <a href="https://wa.me/5516997086377" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        (16) 99708-6377
+      </a>
+      <a href="https://instagram.com/bmkstudio3d" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @bmkstudio3d
+      </a>
+    </div>
+  </footer>
+</section>
+
+<!-- ============================================================
+     SLIDE 3 — COLEÇÃO 02
+     ============================================================ -->
+<section class="slide products-page" data-index="2">
+  <div class="glow" style="width:350px;height:180px;background:rgba(255,107,0,0.07);top:-50px;left:50%;transform:translateX(-50%);"></div>
+
+  <!-- Christmas deco -->
+  <div class="xmas-deco xmas-ornament" style="top:5%;right:7%;width:24px;height:24px;opacity:0.2;">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14" r="8" fill="#FF6B00" opacity="0.5"/><rect x="10" y="4" width="4" height="4" rx="1" fill="#FF6B00" opacity="0.5"/></svg>
+  </div>
+  <div class="xmas-deco xmas-star" style="top:10%;left:6%;width:20px;height:20px;opacity:0.18;animation-delay:1s;">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6.4 4.8L8 14l-6-4.8h7.6z" fill="#fff"/></svg>
+  </div>
+  <div class="xmas-deco xmas-snowflake" style="bottom:15%;left:4%;width:18px;height:18px;opacity:0.1;animation-delay:3s;">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke="#FF6B00" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+  <div class="xmas-deco xmas-shimmer" style="top:55%;right:4%;width:5px;height:5px;opacity:0.4;animation-delay:0.5s;">
+    <svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#FF6B00"/></svg>
+  </div>
+
+  <div class="discount-ticker">
+    <div class="discount-ticker__track">
+      <span class="discount-ticker__item"><span>🎄</span> Compre 3 peças e ganhe 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎁</span> 5 peças ou mais = 30% de desconto! <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>⭐</span> Kit Natal: Bandeja + 2 peças = 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎄</span> Compre 3 peças e ganhe 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎁</span> 5 peças ou mais = 30% de desconto! <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>⭐</span> Kit Natal: Bandeja + 2 peças = 20% OFF <span class="discount-ticker__dot"></span></span>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <div class="anim-down"><span class="pill pill--dark">Pág. 3</span></div>
+    <h2 class="page-header__title anim-up d1">Natal em <span>cada detalhe</span></h2>
+    <p class="page-header__sub anim-up d2">Coleção Natal 2026</p>
+    <div class="page-header__count anim-scale d3"><span class="pill pill--orange">05 Peças Selecionadas</span></div>
+    <p class="page-header__desc anim-up d4">Detalhes especiais para uma decoração cheia de personalidade.</p>
+  </header>
+
+  <div class="product-grid">
+    <!-- 7. Letreiro Feliz Natal -->
+    <article class="card anim-up d2">
+      <div class="card__img-wrap">
+        <img src="Catálogo/4684-letreiro-feliz-natal.jpg" alt="Letreiro Feliz Natal" class="card__img" loading="lazy">
+        <span class="card__code">4684</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Letreiro Feliz Natal</h3>
+        <p class="card__desc">Letreiro decorativo em vermelho glitter com árvore de Natal e floco de neve integrados. Para mesa ou aparador.</p>
+        <span class="card__price">R$ 15,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Letreiro%20Feliz%20Natal%20(C%C3%B3digo%3A%204684)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- 8. Árvore de Natal -->
+    <article class="card anim-up d3">
+      <div class="card__img-wrap">
+        <img src="Catálogo/6140-arvore-natal.jpg" alt="Árvore de Natal" class="card__img" loading="lazy">
+        <span class="card__code">6140</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Árvore de Natal</h3>
+        <p class="card__desc">Árvore decorativa em dois tamanhos, com camadas de folhagem verde, estrela no topo e tronco em tons de madeira.</p>
+        <span class="card__price">R$ 18,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20%C3%81rvore%20de%20Natal%20(C%C3%B3digo%3A%206140)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- 10. Grinch Cadeira -->
+    <article class="card anim-up d5">
+      <div class="card__img-wrap">
+        <img src="Catálogo/6297-grinch-cadeira-vermelha.jpg" alt="Grinch na Cadeira Vermelha" class="card__img" loading="lazy">
+        <span class="card__code">6297</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Grinch na Cadeira Vermelha</h3>
+        <p class="card__desc">Grinch sentado em sua poltrona clássica vermelha capitonê, com expressão travessa e pose pensativa.</p>
+        <span class="card__price">R$ 24,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Grinch%20na%20Cadeira%20Vermelha%20(C%C3%B3digo%3A%206297)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- 11. Urso Polar -->
+    <article class="card anim-up d6">
+      <div class="card__img-wrap">
+        <img src="Catálogo/6749-urso-polar.jpg" alt="Urso Polar" class="card__img" loading="lazy">
+        <span class="card__code">6749</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Urso Polar</h3>
+        <p class="card__desc">Ursos polares em 4 poses: sentado, acenando, em pé e dormindo. Disponível individual ou kit família.</p>
+        <span class="card__price">R$ 9,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Urso%20Polar%20(C%C3%B3digo%3A%206749)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- 12. Boneco de Neve Tricô -->
+    <article class="card card--center anim-up d7">
+      <div class="card__img-wrap">
+        <img src="Catálogo/6757-boneco-neve-trico.jpg" alt="Boneco de Neve Tricô" class="card__img" loading="lazy">
+        <span class="card__code">6757</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Boneco de Neve Tricô</h3>
+        <p class="card__desc">Boneco de neve amigurumi com textura de tricô, cachecol vermelho, cartola preta, nariz de cenoura e braços de galho.</p>
+        <span class="card__price">R$ 25,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Boneco%20de%20Neve%20Tric%C3%B4%20(C%C3%B3digo%3A%206757)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+  </div>
+
+  <footer class="page-footer">
+    <p class="page-footer__section-title">Pedidos e Informações</p>
+    <div class="page-footer__links">
+      <a href="https://wa.me/5516997086377" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>(16) 99708-6377</a>
+      <a href="https://instagram.com/bmkstudio3d" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@bmkstudio3d</a>
+    </div>
+  </footer>
+</section>
+
+<!-- ============================================================
+     SLIDE 4 — COLEÇÃO 03 + ENCERRAMENTO
+     ============================================================ -->
+<section class="slide products-page" data-index="3">
+  <div class="glow" style="width:350px;height:180px;background:rgba(255,107,0,0.07);top:-50px;left:50%;transform:translateX(-50%);"></div>
+
+  <!-- Christmas deco -->
+  <div class="xmas-deco xmas-star" style="top:4%;left:8%;width:26px;height:26px;opacity:0.22;">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16.4l-6.4 4.8L8 14l-6-4.8h7.6z" fill="#FF6B00"/></svg>
+  </div>
+  <div class="xmas-deco xmas-gift" style="top:8%;right:6%;width:22px;height:22px;opacity:0.12;animation-delay:1s;">
+    <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="12" rx="2" fill="#FF6B00"/><rect x="2" y="7" width="20" height="4" rx="1" fill="#FF6B00" opacity="0.7"/><line x1="12" y1="7" x2="12" y2="22" stroke="#fff" stroke-width="1.5"/><path d="M12 7c-2-3-5-4-5-4s3-1 5 4zm0 0c2-3 5-4 5-4s-3-1-5 4z" stroke="#fff" stroke-width="1"/></svg>
+  </div>
+  <div class="xmas-deco xmas-ornament" style="bottom:20%;left:5%;width:18px;height:18px;opacity:0.15;animation-delay:2s;">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14" r="8" fill="#fff" opacity="0.5"/><rect x="10" y="4" width="4" height="4" rx="1" fill="#fff" opacity="0.5"/></svg>
+  </div>
+  <div class="xmas-deco xmas-shimmer" style="top:45%;right:5%;width:5px;height:5px;opacity:0.4;animation-delay:1.5s;">
+    <svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#FF6B00"/></svg>
+  </div>
+
+  <div class="discount-ticker">
+    <div class="discount-ticker__track">
+      <span class="discount-ticker__item"><span>🎄</span> Compre 3 peças e ganhe 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎁</span> 5 peças ou mais = 30% de desconto! <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>⭐</span> Kit Natal: Bandeja + 2 peças = 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎄</span> Compre 3 peças e ganhe 20% OFF <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>🎁</span> 5 peças ou mais = 30% de desconto! <span class="discount-ticker__dot"></span></span>
+      <span class="discount-ticker__item"><span>⭐</span> Kit Natal: Bandeja + 2 peças = 20% OFF <span class="discount-ticker__dot"></span></span>
+    </div>
+  </div>
+
+  <header class="page-header">
+    <div class="anim-down"><span class="pill pill--dark">Pág. 4</span></div>
+    <h2 class="page-header__title anim-up d1">Natal em <span>cada detalhe</span></h2>
+    <p class="page-header__sub anim-up d2">Coleção Natal 2026</p>
+    <div class="page-header__count anim-scale d3"><span class="pill pill--orange">06 Peças Selecionadas</span></div>
+    <p class="page-header__desc anim-up d4">Encontre o toque final para sua decoração de Natal.</p>
+  </header>
+
+  <div class="product-grid">
+    <!-- 13. Bandeja Natal -->
+    <article class="card anim-up d2">
+      <div class="card__img-wrap">
+        <img src="Catálogo/7159-bandeja-natal.jpg" alt="Bandeja Natal" class="card__img" loading="lazy">
+        <span class="card__code">7159</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Bandeja Natal</h3>
+        <p class="card__desc">Bandeja oval decorativa com borda canelada em tom nude/bege. Perfeita para compor cenários natalinos.</p>
+        <span class="card__price">R$ 14,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Bandeja%20Natal%20(C%C3%B3digo%3A%207159)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- 14. Bandeja Aura -->
+    <article class="card anim-up d3">
+      <div class="card__img-wrap">
+        <img src="Catálogo/7212-bandeja-aura.jpg" alt="Bandeja Aura" class="card__img" loading="lazy">
+        <span class="card__code">7212</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Bandeja Aura</h3>
+        <p class="card__desc">Bandeja oval com borda canelada em creme/off-white. Design clean e versátil para servir ou decorar.</p>
+        <span class="card__price">R$ 18,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Bandeja%20Aura%20(C%C3%B3digo%3A%207212)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- 15. Rena Inverno -->
+    <article class="card anim-up d4">
+      <div class="card__img-wrap">
+        <img src="Catálogo/7382-rena-inverno-cachecol.jpg" alt="Rena de Inverno com Cachecol" class="card__img" loading="lazy">
+        <span class="card__code">7382</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Rena de Inverno com Cachecol</h3>
+        <p class="card__desc">Rena branca de linhas geométricas com cachecol de tricô. Design moderno e elegante em estilo escandinavo.</p>
+        <span class="card__price">R$ 18,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Rena%20de%20Inverno%20com%20Cachecol%20(C%C3%B3digo%3A%207382)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- 16. Grinch Sentado -->
+    <article class="card anim-up d5">
+      <div class="card__img-wrap">
+        <img src="Catálogo/7396-grinch-sentado.jpg" alt="Grinch Sentado" class="card__img" loading="lazy">
+        <span class="card__code">7396</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Grinch Sentado</h3>
+        <p class="card__desc">Grinch vestido de Papai Noel, sentado com pernas cruzadas e caneca verde. A expressão marota clássica.</p>
+        <span class="card__price">R$ 24,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Grinch%20Sentado%20(C%C3%B3digo%3A%207396)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- 17. Rena Pequena -->
+    <article class="card card--center anim-up d6">
+      <div class="card__img-wrap">
+        <img src="Catálogo/8949-rena-natal-pequena-trico.jpg" alt="Rena de Natal Pequena Tricô" class="card__img" loading="lazy">
+        <span class="card__code">8949</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Rena de Natal Pequena Tricô</h3>
+        <p class="card__desc">Rena pequena em estilo amigurumi com textura de tricô, chifres marrons e nariz vermelho brilhante. Compacta e encantadora.</p>
+        <span class="card__price">R$ 8,90</span>
+        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Rena%20de%20Natal%20Pequena%20Tric%C3%B4%20(C%C3%B3digo%3A%208949)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+      </div>
+    </article>
+
+    <!-- KIT BUILDER -->
+    <div class="kit-builder anim-scale d7" id="kitBuilder">
+      <div class="kit-builder__header">
+        <h3 class="kit-builder__title">Monte seu <span>Kit Natal</span> 🎄</h3>
+        <p class="kit-builder__sub">Bandeja Natal + 2 peças com 20% de desconto!</p>
+      </div>
+
+      <div class="kit-builder__example">
+        <img src="Catálogo/614008949-kit-arvore-rena.png" alt="Exemplo de Kit: Árvore + Rena na Bandeja" class="kit-builder__example-img">
+        <p class="kit-builder__example-caption">Sugestão de montagem</p>
+      </div>
+
+      <div class="kit-builder__tiers">
+        <span class="kit-tier active" data-tier="20">Bandeja + 2 peças = 20% OFF</span>
+      </div>
+
+      <div class="kit-builder__bandeja-fixa">
+        <div class="kit-item selected">
+          <img src="Catálogo/7159-bandeja-natal.jpg" alt="Bandeja Natal" class="kit-item__img">
+          <div class="kit-item__info">
+            <p class="kit-item__name">Bandeja Natal</p>
+            <p class="kit-item__price-tag">R$ 14,90 · Inclusa no kit</p>
+          </div>
+          <span class="kit-item__check">✓</span>
+        </div>
+      </div>
+
+      <p class="kit-builder__section-title" style="margin-top:14px;">Escolha 2 peças</p>
+      <div class="kit-builder__produtos">
+        <div class="kit-item" data-kit-name="Papai Noel Tricô" data-kit-price="12.90">
+          <img src="Catálogo/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="kit-item__img">
+          <div class="kit-item__info">
+            <p class="kit-item__name">Papai Noel Tricô</p>
+            <p class="kit-item__price-tag">R$ 12,90</p>
+          </div>
+          <div class="kit-builder__qty">
+            <button class="kit-qty-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="kit-qty-val">0</span>
+            <button class="kit-qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+        </div>
+        <div class="kit-item" data-kit-name="Boneco de Gengibre Tricô" data-kit-price="8.90">
+          <img src="Catálogo/4230-boneco-gengibre-trico.jpg" alt="Boneco de Gengibre Tricô" class="kit-item__img">
+          <div class="kit-item__info">
+            <p class="kit-item__name">Boneco Gengibre</p>
+            <p class="kit-item__price-tag">R$ 8,90</p>
+          </div>
+          <div class="kit-builder__qty">
+            <button class="kit-qty-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="kit-qty-val">0</span>
+            <button class="kit-qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+        </div>
+        <div class="kit-item" data-kit-name="Boneco de Neve Tricô" data-kit-price="25.90">
+          <img src="Catálogo/6757-boneco-neve-trico.jpg" alt="Boneco de Neve Tricô" class="kit-item__img">
+          <div class="kit-item__info">
+            <p class="kit-item__name">Boneco de Neve</p>
+            <p class="kit-item__price-tag">R$ 25,90</p>
+          </div>
+          <div class="kit-builder__qty">
+            <button class="kit-qty-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="kit-qty-val">0</span>
+            <button class="kit-qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+        </div>
+        <div class="kit-item" data-kit-name="Rena de Natal Tricô" data-kit-price="8.90">
+          <img src="Catálogo/8949-rena-natal-pequena-trico.jpg" alt="Rena de Natal Tricô" class="kit-item__img">
+          <div class="kit-item__info">
+            <p class="kit-item__name">Rena Natal Tricô</p>
+            <p class="kit-item__price-tag">R$ 8,90</p>
+          </div>
+          <div class="kit-builder__qty">
+            <button class="kit-qty-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="kit-qty-val">0</span>
+            <button class="kit-qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+        </div>
+        <div class="kit-item" data-kit-name="Árvore de Natal" data-kit-price="18.90">
+          <img src="Catálogo/6140-arvore-natal.jpg" alt="Árvore de Natal" class="kit-item__img">
+          <div class="kit-item__info">
+            <p class="kit-item__name">Árvore de Natal</p>
+            <p class="kit-item__price-tag">R$ 18,90</p>
+          </div>
+          <div class="kit-builder__qty">
+            <button class="kit-qty-btn" onclick="changeQty(this,-1)">−</button>
+            <span class="kit-qty-val">0</span>
+            <button class="kit-qty-btn" onclick="changeQty(this,1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-builder__summary" id="kitSummary">
+        <p class="kit-summary__items" id="kitItemCount">Nenhum item selecionado</p>
+        <p class="kit-summary__original" id="kitOriginal"></p>
+        <p class="kit-summary__total" id="kitTotal">R$ 0,00</p>
+        <p class="kit-summary__economy" id="kitEconomy"></p>
+        <button class="kit-summary__cart-btn" id="kitCartBtn" onclick="addKitToCart()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          Adicionar Kit ao Carrinho
+        </button>
+        <div class="kit-summary__added" id="kitAddedMsg">✓ Kit adicionado ao carrinho!</div>
+        <p class="kit-summary__hint" id="kitHint">Selecione 2 peças para completar o kit e ganhar 20% OFF</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING CTA -->
+  <div class="closing anim-up d7">
+    <h2 class="closing__title">Gostou de <span>alguma peça</span>?</h2>
+    <p class="closing__sub">Entre em contato e faça seu pedido!</p>
+    <div class="closing__buttons">
+      <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Vi%20o%20cat%C3%A1logo%20de%20Natal%202026%20e%20gostaria%20de%20fazer%20um%20pedido!" class="btn btn--orange" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp (16) 99708-6377
+      </a>
+      <a href="https://instagram.com/bmkstudio3d" class="btn btn--white" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @bmkstudio3d
+      </a>
+    </div>
+  </div>
+
+  <!-- LOJISTA -->
+  <div class="lojista anim-up d8">
+    <div class="lojista__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v12a1 1 0 01-1 1H4a1 1 0 01-1-1V9z"/><path d="M9 22V14h6v8"/><path d="M3 9c0 1.1.9 2 2 2s2-.9 2-2"/><path d="M7 9c0 1.1.9 2 2 2s2-.9 2-2"/><path d="M11 9c0 1.1.9 2 2 2s2-.9 2-2"/><path d="M15 9c0 1.1.9 2 2 2s2-.9 2-2"/></svg>
+    </div>
+    <p class="lojista__title">É lojista?</p>
+    <p class="lojista__text">Quer ter um mostruário na sua loja?<br>Fale com a gente e saiba como revender!</p>
+    <div class="lojista__btn">
+      <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Sou%20lojista%20e%20tenho%20interesse%20em%20ter%20um%20mostu%C3%A1rio%20BMK%20Studio%20na%20minha%20loja.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Fale conosco sobre revenda
+      </a>
+    </div>
+  </div>
+
+  <!-- SHOPEE + PROJETOS PERSONALIZADOS -->
+  <div class="cta-grid anim-up d8">
+    <!-- Shopee -->
+    <div class="cta-card">
+      <div class="cta-card__icon">
+        <svg viewBox="0 0 24 24" fill="#FF6B00"><path d="M12 2C9.243 2 7 4.243 7 7h2c0-1.654 1.346-3 3-3s3 1.346 3 3h2c0-2.757-2.243-5-5-5zM4 7c-.552 0-1 .448-1 1v1.5l1.5 11c.11.826.853 1.5 1.688 1.5h11.624c.835 0 1.578-.674 1.688-1.5L21 9.5V8c0-.552-.448-1-1-1H4zm4 5a1 1 0 110-2 1 1 0 010 2zm8 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
+      </div>
+      <p class="cta-card__title">Loja na Shopee</p>
+      <p class="cta-card__text">Conheça nossa loja oficial com mais produtos e promoções exclusivas!</p>
+      <a href="https://shopee.com.br/bmkstudio3d" class="cta-card__link" target="_blank" rel="noopener">Visitar loja →</a>
+    </div>
+    <!-- Projetos Personalizados -->
+    <div class="cta-card">
+      <div class="cta-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <p class="cta-card__title">Projetos Sob Medida</p>
+      <p class="cta-card__text">Tem uma ideia especial? Criamos projetos personalizados exclusivos para você!</p>
+      <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20projeto%20personalizado%20sob%20medida.%20Podem%20me%20ajudar%3F" class="cta-card__link" target="_blank" rel="noopener">Solicitar orçamento →</a>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <p class="page-footer__section-title">Pedidos e Informações</p>
+    <div class="page-footer__links">
+      <a href="https://wa.me/5516997086377" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>(16) 99708-6377</a>
+      <a href="https://instagram.com/bmkstudio3d" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@bmkstudio3d</a>
+    </div>
+    <p class="page-footer__note" style="margin-top:8px;">Imagens ilustrativas · Tons podem variar de acordo com os materiais disponíveis</p>
+    <div style="margin-top:14px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 100" width="100" height="28" role="img" aria-label="BMK Studio"><title>BMK Studio</title><path d="M0 4Q0 0 4 0L77 0C91 0 101 9 101 23L101 31C101 37.5 99.5 42 96.5 45.5C101.5 49.5 104.5 55.5 104.5 63L104.5 75C104.5 90 94 100 79 100L5 100Q0 100 0 95L0 90.2Q22 96.2 56 95.6Q22 94 0 87.4L0 79.6Q21 88.4 54 88.2Q21 86.2 0 76.8L0 67.2Q19 78.6 50 80L77 80Q85 80 85 72L85 66Q85 58 77 58L34 58L38.5 38L74 38Q82 38 82 30L82 27Q82 19 74 19L19 19L19 70Q9 67.6 0 63Z" fill="#FF6B00"/><path d="M121.5 100Q119 100 119 97.5L119 2.5Q119 0 121.5 0L137 0Q138.5 0 139.48 1.14L175.72 43.09Q176.5 44 177.28 43.09L213.52 1.14Q214.5 0 216 0L231.5 0Q234 0 234 2.5L234 97.5Q234 100 231.5 100L217.5 100Q215 100 215 97.5L215 25L178.46 67.23Q176.5 69.5 174.54 67.23L138 25L138 97.5Q138 100 135.5 100ZM252 2.5Q252 0 254.5 0L268.9 0Q271.4 0 271.4 2.5L271.4 41.6L311.94 1.06Q313 0 314.5 0L339.1 0Q340.6 0 339.54 1.06L271.4 69.2L271.4 97.5Q271.4 100 268.9 100L254.5 100Q252 100 252 97.5ZM277.8 62.8L281.05 59.55L321.5 100L315 100ZM282.55 58.05L285.8 54.8L331 100L324.5 100ZM287.3 53.3L290.55 50.05L340.5 100L334 100ZM292.05 48.55L295.3 45.3L350 100L343.5 100Z" fill="#FFFFFF"/></svg>
+    </div>
+    <p class="page-footer__note" style="margin-top:6px;">BMK Studio 3D · Natal 2026</p>
+  </footer>
+</section>
+
+</div><!-- /slides-container -->
+
+<!-- Floating Cart Button -->
+<button class="floating-cart" id="floatingCart" onclick="openCart()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+  <span class="floating-cart__badge" id="cartBadge">0</span>
+</button>
+
+<!-- Cart Toast -->
+<div class="cart-toast" id="cartToast">
+  <p class="cart-toast__text" id="cartToastText"></p>
+</div>
+
+<!-- Cart Celebration -->
+<div class="cart-celebration" id="cartCelebration"></div>
+
+<!-- Cart Overlay -->
+<div class="cart-overlay" id="cartOverlay">
+  <div class="cart-panel">
+    <div class="cart-panel__header">
+      <h3 class="cart-panel__title">Seu <span>Pedido</span></h3>
+      <button class="cart-panel__close" onclick="closeCart()">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-panel__totals" id="cartTotals"></div>
+  </div>
+</div>
+
+<script>
+// Slide system
+let current = 0;
+const total = 4;
+const container = document.getElementById('slidesContainer');
+const dots = document.querySelectorAll('.slide-dot');
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+function goTo(index) {
+  if (index < 0 || index >= total) return;
+  current = index;
+  container.style.transform = `translateX(-${current * 100}vw)`;
+
+  // Reset scroll on each slide
+  slides[current].scrollTop = 0;
+
+  // Update dots
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+  // Update arrows
+  prevBtn.classList.toggle('hidden', current === 0);
+  nextBtn.classList.toggle('hidden', current === total - 1);
+
+  // Hide swipe hint after leaving cover
+  const hint = document.getElementById('swipeHint');
+  if (current > 0) hint.classList.add('hide');
+  else hint.classList.remove('hide');
+
+  // Trigger animations
+  slides.forEach(s => s.classList.remove('slide--active'));
+  slides[current].classList.add('slide--active');
+}
+
+// Dot clicks
+dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.slide))));
+
+// Arrow clicks
+prevBtn.addEventListener('click', () => goTo(current - 1));
+nextBtn.addEventListener('click', () => goTo(current + 1));
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+});
+
+// Touch swipe
+let touchStartX = 0;
+let touchEndX = 0;
+document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+document.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 60) {
+    if (diff > 0) goTo(current + 1);
+    else goTo(current - 1);
+  }
+}, { passive: true });
+
+// ================================================================
+// CART SYSTEM
+// ================================================================
+const cart = {}; // { productId: { name, price, qty, img } }
+
+let toastTimer = null;
+
+function showCartToast(html, duration = 3500) {
+  const toast = document.getElementById('cartToast');
+  const text = document.getElementById('cartToastText');
+  text.innerHTML = html;
+  clearTimeout(toastTimer);
+  toast.classList.add('show');
+  toastTimer = setTimeout(() => toast.classList.remove('show'), duration);
+}
+
+function triggerCelebration() {
+  const fab = document.getElementById('floatingCart');
+  fab.classList.remove('celebrate');
+  void fab.offsetWidth; // force reflow
+  fab.classList.add('celebrate');
+
+  const cel = document.getElementById('cartCelebration');
+  cel.innerHTML = '';
+  const colors = ['#FF6B00', '#25d366', '#fff', '#FFD700', '#ff4757'];
+  for (let i = 0; i < 16; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'confetti';
+    const angle = (i / 16) * Math.PI * 2;
+    const dist = 40 + Math.random() * 50;
+    const x = Math.cos(angle) * dist;
+    const y = Math.sin(angle) * dist;
+    dot.style.cssText = `
+      background: ${colors[i % colors.length]};
+      --confetti-end: translate(${x}px, ${y}px);
+      animation-delay: ${Math.random() * 0.15}s;
+      left: 28px; top: 28px;
+    `;
+    cel.appendChild(dot);
+  }
+  cel.classList.remove('active');
+  void cel.offsetWidth;
+  cel.classList.add('active');
+  setTimeout(() => cel.classList.remove('active'), 1200);
+}
+
+function addToCart(productId, name, price, img) {
+  const prevLoose = getCartLooseItems();
+
+  if (cart[productId]) {
+    cart[productId].qty++;
+  } else {
+    cart[productId] = { name, price: parseFloat(price), qty: 1, img };
+  }
+  updateCartUI();
+
+  const newLoose = getCartLooseItems();
+
+  // Milestone messages (based on loose items only)
+  if (newLoose >= 5 && prevLoose < 5) {
+    triggerCelebration();
+    showCartToast('🎉 <span class="green">Você ganhou 30% de desconto!</span><br>Máximo de desconto atingido!', 5000);
+  } else if (newLoose >= 3 && prevLoose < 3) {
+    triggerCelebration();
+    showCartToast('🎉 <span class="green">Você ganhou 20% de desconto!</span><br>Adicione <span>+2 produtos</span> para ganhar mais 10% de desconto.', 5000);
+  } else if (newLoose === 1) {
+    showCartToast('Produto adicionado! 🛒<br>Adicione <span>+2 produtos</span> para ganhar <span>20% de desconto</span>.');
+  } else if (newLoose === 2) {
+    showCartToast('Quase lá! 🔥<br>Adicione <span>+1 produto</span> para ganhar <span>desconto</span>!');
+  } else if (newLoose === 4) {
+    showCartToast('Falta <span>+1 produto</span> para ganhar <span>30% de desconto</span>! 🔥');
+  } else {
+    showCartToast('Produto adicionado! ✓', 2000);
+  }
+}
+
+function setCartQty(productId, qty) {
+  const prevLoose = getCartLooseItems();
+
+  if (qty <= 0) {
+    delete cart[productId];
+  } else {
+    cart[productId].qty = qty;
+  }
+  updateCartUI();
+
+  const newLoose = getCartLooseItems();
+  if (newLoose > prevLoose) {
+    if (newLoose >= 5 && prevLoose < 5) {
+      triggerCelebration();
+      showCartToast('🎉 <span class="green">Você ganhou 30% de desconto!</span><br>Máximo de desconto atingido!', 5000);
+    } else if (newLoose >= 3 && prevLoose < 3) {
+      triggerCelebration();
+      showCartToast('🎉 <span class="green">Você ganhou 20% de desconto!</span><br>Adicione <span>+2 produtos</span> para ganhar mais 10% de desconto.', 5000);
+    } else if (newLoose === 2) {
+      showCartToast('Adicione <span>+1 produto</span> para ganhar <span>desconto</span>! 🔥');
+    } else if (newLoose === 4) {
+      showCartToast('Falta <span>+1 produto</span> para ganhar <span>30% de desconto</span>! 🔥');
+    }
+  }
+}
+
+function getCartTotalItems() {
+  return Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
+}
+
+function getCartLooseItems() {
+  return Object.values(cart).filter(i => !i.isKit).reduce((sum, item) => sum + item.qty, 0);
+}
+
+function getCartDiscount() {
+  const loose = getCartLooseItems();
+  if (loose >= 5) return 30;
+  if (loose >= 3) return 20;
+  return 0;
+}
+
+function formatBRL(val) {
+  return `R$ ${val.toFixed(2).replace('.', ',')}`;
+}
+
+function updateCartUI() {
+  const totalItems = getCartTotalItems();
+  const badge = document.getElementById('cartBadge');
+  const fab = document.getElementById('floatingCart');
+
+  badge.textContent = totalItems;
+  fab.classList.toggle('visible', totalItems > 0);
+
+  // Update qty displays on cards
+  document.querySelectorAll('.card[data-product-id]').forEach(card => {
+    const pid = card.dataset.productId;
+    const qty = cart[pid] ? cart[pid].qty : 0;
+    const valEl = card.querySelector('.card-qty__val');
+    const addBtn = card.querySelector('.card-qty__add');
+    const controls = card.querySelector('.card-qty__controls');
+    const badgeEl = card.querySelector('.card-added-badge');
+    if (valEl) valEl.textContent = qty;
+    if (addBtn) addBtn.style.display = qty > 0 ? 'none' : 'flex';
+    if (controls) controls.style.display = qty > 0 ? 'flex' : 'none';
+    if (badgeEl) badgeEl.textContent = qty > 0 ? '✓ No carrinho' : '';
+  });
+
+  renderCart();
+}
+
+function renderCart() {
+  const itemsEl = document.getElementById('cartItems');
+  const totalsEl = document.getElementById('cartTotals');
+  const entries = Object.entries(cart);
+
+  if (entries.length === 0) {
+    itemsEl.innerHTML = '<p class="cart-panel__empty">Seu carrinho está vazio.<br>Adicione produtos do catálogo!</p>';
+    totalsEl.innerHTML = '';
+    return;
+  }
+
+  let html = '';
+  let subtotal = 0;
+  entries.forEach(([pid, item]) => {
+    const lineTotal = item.price * item.qty;
+    subtotal += lineTotal;
+    const componentsHtml = item.isKit && item.components
+      ? `<p class="cart-line__components">${item.components.join(' + ')}<br><span class="cart-line__kit-discount">20% OFF incluso</span></p>`
+      : '';
+    html += `
+      <div class="cart-line${item.isKit ? ' cart-line--kit' : ''}">
+        <img src="${item.img}" alt="${item.name}" class="cart-line__img">
+        <div class="cart-line__info">
+          <p class="cart-line__name">${item.name}</p>
+          ${componentsHtml}
+          <p class="cart-line__unit">${item.isKit ? `${formatBRL(item.originalPrice)} → ${formatBRL(item.price)}` : `${formatBRL(item.price)} cada`}</p>
+        </div>
+        <div class="cart-line__qty">
+          <button class="cart-line__qty-btn" onclick="setCartQty('${pid}',${item.qty - 1})">−</button>
+          <span class="cart-line__qty-val">${item.qty}</span>
+          <button class="cart-line__qty-btn" onclick="setCartQty('${pid}',${item.qty + 1})">+</button>
+        </div>
+        <span class="cart-line__subtotal">${formatBRL(lineTotal)}</span>
+      </div>`;
+  });
+  itemsEl.innerHTML = html;
+
+  const totalItems = getCartTotalItems();
+  const looseItems = getCartLooseItems();
+  const discount = getCartDiscount();
+
+  // Separate kit and loose subtotals
+  let looseSubtotal = 0;
+  let kitSubtotal = 0;
+  entries.forEach(([pid, item]) => {
+    if (item.isKit) {
+      kitSubtotal += item.price * item.qty; // kit price already has 20% off
+    } else {
+      looseSubtotal += item.price * item.qty;
+    }
+  });
+
+  const looseDiscountVal = looseSubtotal * (discount / 100);
+  const looseTotal = looseSubtotal - looseDiscountVal;
+  const grandTotal = looseTotal + kitSubtotal;
+
+  let totalsHtml = `<div class="cart-totals__row"><span>Subtotal (${totalItems} ${totalItems === 1 ? 'item' : 'itens'})</span><span>${formatBRL(subtotal)}</span></div>`;
+
+  if (kitSubtotal > 0) {
+    const kitOriginalTotal = entries.filter(([,i]) => i.isKit).reduce((s,[,i]) => s + i.originalPrice * i.qty, 0);
+    const kitSavings = kitOriginalTotal - kitSubtotal;
+    totalsHtml += `<div class="cart-totals__row cart-totals__row--discount"><span>Desconto Kit Natal <span class="cart-discount-badge">-20%</span></span><span>-${formatBRL(kitSavings)}</span></div>`;
+  }
+
+  if (discount > 0 && looseSubtotal > 0) {
+    totalsHtml += `<div class="cart-totals__row cart-totals__row--discount"><span>Desconto ${looseItems} ${looseItems === 1 ? 'peça' : 'peças'} <span class="cart-discount-badge">-${discount}%</span></span><span>-${formatBRL(looseDiscountVal)}</span></div>`;
+  }
+
+  totalsHtml += `<div class="cart-totals__row cart-totals__row--total"><span>Total</span><span>${formatBRL(grandTotal)}</span></div>`;
+
+  // Hint for next discount tier (only loose items count)
+  if (discount === 0 && looseItems > 0 && looseItems < 3) {
+    totalsHtml += `<p class="cart-discount-hint">Adicione mais ${3 - looseItems} peça${3 - looseItems > 1 ? 's' : ''} para ganhar 20% OFF nos itens avulsos</p>`;
+  } else if (discount === 20 && looseItems < 5) {
+    totalsHtml += `<p class="cart-discount-hint">Adicione mais ${5 - looseItems} peça${5 - looseItems > 1 ? 's' : ''} para ganhar 30% OFF nos itens avulsos</p>`;
+  }
+
+  // WhatsApp button
+  const lines = ['Olá!', '', 'Quero fazer um pedido:', ''];
+  entries.forEach(([pid, item]) => {
+    if (item.isKit) {
+      lines.push(`${item.qty}x ${item.name} - ${formatBRL(item.price * item.qty)} (20% OFF)`);
+      if (item.components) {
+        lines.push(`  (${item.components.join(' + ')})`);
+      }
+    } else {
+      lines.push(`${item.qty}x ${item.name} - ${formatBRL(item.price * item.qty)}`);
+    }
+  });
+  lines.push('');
+  const hasKits = entries.some(([,i]) => i.isKit);
+  const hasLoose = looseSubtotal > 0;
+  if (hasKits) {
+    const kitOriginalTotal = entries.filter(([,i]) => i.isKit).reduce((s,[,i]) => s + i.originalPrice * i.qty, 0);
+    lines.push(`Desconto Kit Natal (20%): -${formatBRL(kitOriginalTotal - kitSubtotal)}`);
+  }
+  if (discount > 0 && hasLoose) {
+    lines.push(`Desconto ${discount}% (${looseItems} peças): -${formatBRL(looseDiscountVal)}`);
+  }
+  if (hasKits || discount > 0) {
+    lines.push('');
+  }
+  lines.push(`Total: ${formatBRL(grandTotal)}`);
+  const waUrl = `https://wa.me/5516997086377?text=${encodeURIComponent(lines.join('\n'))}`;
+
+  totalsHtml += `<a class="cart-panel__wa" href="${waUrl}" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Enviar pedido via WhatsApp
+  </a>`;
+
+  totalsEl.innerHTML = totalsHtml;
+}
+
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('active');
+}
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('active');
+}
+document.getElementById('cartOverlay').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('cartOverlay')) closeCart();
+});
+
+// Inject qty controls into product cards
+document.querySelectorAll('.card').forEach(card => {
+  const nameEl = card.querySelector('.card__name');
+  const priceEl = card.querySelector('.card__price');
+  const imgEl = card.querySelector('.card__img');
+  const codeEl = card.querySelector('.card__code');
+  if (!nameEl || !priceEl || !imgEl || !codeEl) return;
+
+  const pid = codeEl.textContent.trim();
+  card.dataset.productId = pid;
+
+  const priceText = priceEl.textContent.replace('R$', '').replace(',', '.').trim();
+  const name = nameEl.textContent;
+  const img = imgEl.src;
+
+  // Remove old WhatsApp link
+  const oldWa = card.querySelector('.card-wa');
+  if (oldWa) oldWa.remove();
+
+  // Add qty controls
+  const qtyDiv = document.createElement('div');
+  qtyDiv.className = 'card-qty';
+  qtyDiv.innerHTML = `
+    <button class="card-qty__add" onclick="event.stopPropagation(); addToCart('${pid}','${name.replace(/'/g,"\\'")}',${priceText},'${img}')">
+      + Adicionar
+    </button>
+    <div class="card-qty__controls" style="display:none;">
+      <button class="card-qty__btn" onclick="event.stopPropagation(); setCartQty('${pid}', (cart['${pid}']?.qty||1) - 1)">−</button>
+      <span class="card-qty__val">0</span>
+      <button class="card-qty__btn" onclick="event.stopPropagation(); setCartQty('${pid}', (cart['${pid}']?.qty||0) + 1)">+</button>
+    </div>
+  `;
+
+  const badgeDiv = document.createElement('div');
+  badgeDiv.className = 'card-added-badge';
+
+  const body = card.querySelector('.card__body');
+  body.appendChild(qtyDiv);
+  body.appendChild(badgeDiv);
+});
+
+// Init
+goTo(0);
+
+// Card popup
+const overlay = document.createElement('div');
+overlay.className = 'card-overlay';
+overlay.innerHTML = `
+  <button class="card-overlay__close" aria-label="Fechar">✕</button>
+  <div class="card-overlay__inner">
+    <img class="card-overlay__img" src="" alt="">
+    <div class="card-overlay__body">
+      <span class="card-overlay__code"></span>
+      <h3 class="card-overlay__name"></h3>
+      <p class="card-overlay__desc"></p>
+      <span class="card-overlay__price"></span>
+      <div class="card-overlay__actions">
+        <button class="card-overlay__add-btn" id="overlayAddBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          Adicionar ao carrinho
+        </button>
+        <a class="card-overlay__wa" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Enviar para um amigo
+        </a>
+      </div>
+    </div>
+  </div>
+`;
+document.body.appendChild(overlay);
+
+function closeOverlay() {
+  overlay.classList.remove('active');
+}
+
+overlay.querySelector('.card-overlay__close').addEventListener('click', closeOverlay);
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) closeOverlay();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeOverlay();
+});
+
+// Kit Builder (Bandeja Natal fixa + 2 peças = 20% OFF)
+const KIT_BANDEJA_PRICE = 14.90;
+
+function getKitTotalPecas() {
+  let total = 0;
+  document.querySelectorAll('.kit-builder__produtos .kit-qty-val').forEach(el => {
+    total += parseInt(el.textContent);
+  });
+  return total;
+}
+
+function changeQty(btn, delta) {
+  const valEl = btn.parentElement.querySelector('.kit-qty-val');
+  let val = parseInt(valEl.textContent) + delta;
+  if (val < 0) val = 0;
+  // Block adding beyond 2 total pieces
+  if (delta > 0 && getKitTotalPecas() >= 2) return;
+  valEl.textContent = val;
+  const item = btn.closest('.kit-item');
+  item.classList.toggle('selected', val > 0);
+  updateKitSummary();
+}
+
+function updateKitSummary() {
+  const items = [];
+  let totalPecas = 0;
+
+  document.querySelectorAll('.kit-builder__produtos .kit-item').forEach(item => {
+    const qty = parseInt(item.querySelector('.kit-qty-val').textContent);
+    if (qty > 0) {
+      items.push({ name: item.dataset.kitName, price: parseFloat(item.dataset.kitPrice), qty });
+      totalPecas += qty;
+    }
+  });
+
+  const subtotal = KIT_BANDEJA_PRICE + items.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const kitCompleto = totalPecas >= 2;
+  const discount = kitCompleto ? 20 : 0;
+  const discountedTotal = subtotal * (1 - discount / 100);
+  const economy = subtotal - discountedTotal;
+
+  const countEl = document.getElementById('kitItemCount');
+  const originalEl = document.getElementById('kitOriginal');
+  const totalEl = document.getElementById('kitTotal');
+  const economyEl = document.getElementById('kitEconomy');
+  const cartBtn = document.getElementById('kitCartBtn');
+  const addedMsg = document.getElementById('kitAddedMsg');
+  const hintEl = document.getElementById('kitHint');
+
+  // Hide added message when selection changes
+  addedMsg.style.display = 'none';
+
+  if (totalPecas === 0) {
+    countEl.textContent = 'Bandeja Natal inclusa · Escolha 2 peças';
+    originalEl.textContent = '';
+    totalEl.textContent = `R$ ${KIT_BANDEJA_PRICE.toFixed(2).replace('.', ',')}`;
+    economyEl.textContent = '';
+    hintEl.textContent = 'Selecione 2 peças para completar o kit e ganhar 20% OFF';
+    cartBtn.classList.remove('enabled');
+    return;
+  }
+
+  countEl.textContent = `Bandeja Natal + ${totalPecas} peça${totalPecas > 1 ? 's' : ''}`;
+
+  if (kitCompleto) {
+    originalEl.innerHTML = `De R$ ${subtotal.toFixed(2).replace('.', ',')} <span class="kit-summary__discount-badge">-20%</span>`;
+    totalEl.textContent = `R$ ${discountedTotal.toFixed(2).replace('.', ',')}`;
+    economyEl.textContent = `Você economiza R$ ${economy.toFixed(2).replace('.', ',')}`;
+    hintEl.textContent = '';
+    cartBtn.classList.add('enabled');
+  } else {
+    originalEl.textContent = '';
+    totalEl.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+    economyEl.textContent = '';
+    hintEl.textContent = `Adicione mais ${2 - totalPecas} peça${2 - totalPecas > 1 ? 's' : ''} para completar o kit e ganhar 20% OFF`;
+    cartBtn.classList.remove('enabled');
+  }
+
+  // Disable/enable + buttons based on 2-piece limit
+  const atLimit = totalPecas >= 2;
+  document.querySelectorAll('.kit-builder__produtos .kit-qty-btn').forEach(btn => {
+    if (btn.textContent.trim() === '+') {
+      btn.classList.toggle('disabled', atLimit && parseInt(btn.parentElement.querySelector('.kit-qty-val').textContent) === 0);
+    }
+  });
+}
+
+function addKitToCart() {
+  const items = [];
+  document.querySelectorAll('.kit-builder__produtos .kit-item').forEach(item => {
+    const qty = parseInt(item.querySelector('.kit-qty-val').textContent);
+    if (qty > 0) {
+      items.push({ name: item.dataset.kitName, price: parseFloat(item.dataset.kitPrice), qty });
+    }
+  });
+
+  const totalPecas = items.reduce((sum, i) => sum + i.qty, 0);
+  if (totalPecas < 2) return;
+
+  const subtotal = KIT_BANDEJA_PRICE + items.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const discountedTotal = subtotal * 0.80;
+
+  // Build components list for display
+  const components = ['Bandeja Natal'];
+  items.forEach(i => {
+    for (let n = 0; n < i.qty; n++) components.push(i.name);
+  });
+
+  // Use unique kit ID based on components
+  const kitId = 'kit-natal-' + components.slice(1).sort().join('-').replace(/\s/g, '');
+
+  // Add kit to cart as special item
+  if (cart[kitId]) {
+    cart[kitId].qty++;
+  } else {
+    cart[kitId] = {
+      name: 'Kit Natal 2026',
+      price: parseFloat(discountedTotal.toFixed(2)),
+      qty: 1,
+      img: document.querySelector('.kit-builder__bandeja-fixa img')?.src || '',
+      isKit: true,
+      components: components,
+      originalPrice: subtotal
+    };
+  }
+  updateCartUI();
+  showCartToast('Kit Natal adicionado! 🎄✓ <br><span>20% OFF aplicado no kit</span>', 3000);
+
+  // Show confirmation in kit builder
+  const addedMsg = document.getElementById('kitAddedMsg');
+  addedMsg.style.display = 'flex';
+}
+
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    // Don't open popup if clicking cart controls, WhatsApp link, or inside kit builder
+    if (e.target.closest('.card-qty')) return;
+    if (e.target.closest('.card-wa')) return;
+    if (e.target.closest('.kit-builder')) return;
+
+    const img = card.querySelector('.card__img');
+    const code = card.querySelector('.card__code');
+    const nameEl = card.querySelector('.card__name');
+    const desc = card.querySelector('.card__desc');
+    const price = card.querySelector('.card__price');
+
+    overlay.querySelector('.card-overlay__img').src = img.src;
+    overlay.querySelector('.card-overlay__img').alt = img.alt;
+    overlay.querySelector('.card-overlay__code').textContent = code ? code.textContent : '';
+    overlay.querySelector('.card-overlay__name').textContent = nameEl.textContent;
+    overlay.querySelector('.card-overlay__desc').textContent = desc.textContent;
+    overlay.querySelector('.card-overlay__price').textContent = price.textContent;
+
+    const prodName = nameEl.textContent;
+    const prodCode = code ? code.textContent : '';
+    const prodPrice = price.textContent;
+    const priceNum = parseFloat(prodPrice.replace('R$', '').replace(',', '.').trim());
+
+    // WhatsApp share - opens contact picker (no fixed number)
+    const shareMsg = [
+      'Olha que lindo! 🎄',
+      '',
+      `*${prodName}*`,
+      `${prodPrice}`,
+      '',
+      'Do catálogo de Natal 2026 da BMK Studio 3D!',
+      'Peça o seu pelo WhatsApp: (16) 99708-6377',
+      '@bmkstudio3d',
+      '',
+      `Veja o catálogo: ${window.location.href}`
+    ].join('\n');
+    overlay.querySelector('.card-overlay__wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMsg)}`;
+
+    // Add to cart button
+    const addBtn = overlay.querySelector('#overlayAddBtn');
+    const newBtn = addBtn.cloneNode(true);
+    addBtn.replaceWith(newBtn);
+    newBtn.id = 'overlayAddBtn';
+    newBtn.addEventListener('click', () => {
+      addToCart(prodCode, prodName, priceNum, img.src);
+      closeOverlay();
+    });
+
+    overlay.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
