@@ -2538,7 +2538,7 @@ function sendOrderWebhook(orderLines, grandTotal, entries) {
       'Authorization': 'Bearer crsr_d46cc32acede4486c13f298db4505c62114dda1516304db405708ff599bfb2c7'
     },
     body: JSON.stringify(payload)
-  }).catch(() => {});
+  }).then(r => console.log('Webhook:', r.status)).catch(e => console.error('Webhook erro:', e));
 }
 
 function openCart() {
