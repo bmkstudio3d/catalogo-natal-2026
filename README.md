@@ -12,7 +12,7 @@
   <a href="https://bmkstudio3d.github.io/catalogo-natal-2026/">
     <img src="https://img.shields.io/badge/Ver_Cat%C3%A1logo-Online-FF6B00?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Ver Catálogo Online">
   </a>
-  <a href="https://wa.me/5516997086377">
+  <a href="https://wa.me/5516999930854">
     <img src="https://img.shields.io/badge/WhatsApp-Fazer_Pedido-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp">
   </a>
   <a href="https://www.instagram.com/bmkstudio3d">
@@ -42,22 +42,22 @@ Catálogo digital interativo da coleção de Natal 2026 da **BMK Studio 3D**, co
 
 | Código | Produto | Preço |
 |--------|---------|-------|
-| 0415 | Anéis de Guardanapo Natal (6 un.) | R$ 24,90 |
-| 2005 | Jesus | R$ 5,90 |
+| 0415 | Porta Guardanapo Natalino (6 un.) | R$ 14,90 |
+| 2005 | Mini Jesus | R$ 10,90 |
 | 3225 | Papai Noel Tricô | R$ 12,90 |
 | 3625 | Presépio Sagrada Família | R$ 15,90 |
-| 3639 | Biscoito de Gengibre Personalizado | R$ 5,90 |
+| 3639 | Biscoito de Gengibre Personalizado | R$ 15,90 |
 | 4230 | Boneco de Gengibre Tricô | R$ 8,90 |
 | 4684 | Letreiro Feliz Natal | R$ 15,90 |
 | 6140 | Árvore de Natal | R$ 18,90 |
 | 6297 | Grinch na Cadeira Vermelha | R$ 25,90 |
-| 6749 | Urso Polar | R$ 8,90 |
-| 6757 | Boneco de Neve Tricô | R$ 25,90 |
+| 6749 | Urso Polar (individual / Kit 4: R$ 39,90) | R$ 11,90 |
+| 6757 | Boneco de Neve Tricô (Em Breve) | R$ 23,90 |
 | 7159 | Bandeja Natal | R$ 14,90 |
 | 7212 | Bandeja Aura | R$ 14,90 |
 | 7382 | Rena de Inverno com Cachecol | R$ 18,90 |
 | 7396 | Grinch Sentado | R$ 18,90 |
-| 8949 | Rena de Natal Pequena Tricô | R$ 8,90 |
+| 8949 | Rena de Natal Pequena Tricô | R$ 11,90 |
 
 ## Descontos
 

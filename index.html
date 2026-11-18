@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>BMK Studio 3D — Catálogo Natal 2026</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="Catálogo/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="Catálogo/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="Catálogo/favicon-192.png">
+<link rel="apple-touch-icon" href="Catálogo/apple-touch-icon.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -540,6 +540,44 @@ body {
 }
 .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
 .card { cursor: pointer; }
+
+/* Faixa diagonal "Em Breve" */
+.card__badge-soon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.card__badge-soon::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 28px;
+  left: -40px;
+  width: 180px;
+  text-align: center;
+  transform: rotate(-35deg);
+  background: rgba(255, 107, 0, 0.55);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 0;
+  box-shadow: 0 2px 12px rgba(255,107,0,0.25);
+}
+
+/* Preço do kit (Urso Polar) */
+.card__price-kit {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--orange);
+  margin-top: 2px;
+}
 
 /* Card popup overlay */
 .card-overlay {
@@ -1623,26 +1661,26 @@ body {
   <p class="cover__subtitle anim-up d3">Detalhes que fazem a magia acontecer</p>
 
   <div class="cover__showcase anim-scale d4">
-    <img src="Catálogo/4684-letreiro-feliz-natal.jpg" alt="Letreiro Feliz Natal" class="cover__hero-img" loading="lazy">
-    <img src="Catálogo/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="cover__float cover__float--1" loading="lazy">
-    <img src="Catálogo/3625-presepio-sagrada-familia.jpg" alt="Presépio" class="cover__float cover__float--2" loading="lazy">
-    <img src="Catálogo/8949-rena-natal-pequena-trico.jpg" alt="Rena Tricô" class="cover__float cover__float--3" loading="lazy">
+    <img src="Catálogo/imagens/4684-letreiro-feliz-natal.jpg" alt="Letreiro Feliz Natal" class="cover__hero-img" loading="lazy">
+    <img src="Catálogo/imagens/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="cover__float cover__float--1" loading="lazy">
+    <img src="Catálogo/imagens/3625-presepio-sagrada-familia.jpg" alt="Presépio" class="cover__float cover__float--2" loading="lazy">
+    <img src="Catálogo/imagens/8949-rena-natal-pequena-trico.jpg" alt="Rena Tricô" class="cover__float cover__float--3" loading="lazy">
   </div>
 
   <p class="cover__tagline anim-up d5">Feito para presentear, decorar e celebrar.</p>
   <p class="cover__count anim-up d6">17 criações para deixar seu Natal ainda mais especial</p>
 
   <div class="cover__cta anim-up d7">
-    <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Vi%20o%20cat%C3%A1logo%20de%20Natal%202026%20da%20BMK%20Studio%20e%20quero%20saber%20mais!" class="btn btn--orange" target="_blank" rel="noopener">
+    <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Vi%20o%20cat%C3%A1logo%20de%20Natal%202026%20da%20BMK%20Studio%20e%20quero%20saber%20mais!" class="btn btn--orange" target="_blank" rel="noopener">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Faça seu Pedido
     </a>
   </div>
 
   <div class="cover__contact anim-up d8">
-    <a href="https://wa.me/5516997086377" target="_blank" rel="noopener">
+    <a href="https://wa.me/5516999930854" target="_blank" rel="noopener">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      (16) 99708-6377
+      (16) 99993-0854
     </a>
     <a href="https://instagram.com/bmkstudio3d" target="_blank" rel="noopener">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -1690,34 +1728,34 @@ body {
   </header>
 
   <div class="product-grid">
-    <!-- 1. Anéis de Guardanapo -->
+    <!-- 1. Porta Guardanapo Natalino -->
     <article class="card anim-up d2">
       <div class="card__img-wrap">
-        <img src="Catálogo/0415-aneis-guardanapo-natal.jpg" alt="Anéis de Guardanapo Natal" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/0415-aneis-guardanapo-natal.jpg" alt="Porta Guardanapo Natalino" class="card__img" loading="lazy">
         <span class="card__code">0415</span>
       </div>
       <div class="card__body">
-        <h3 class="card__name">Anéis de Guardanapo Natal</h3>
+        <h3 class="card__name">Porta Guardanapo Natalino</h3>
         <p class="card__desc">Conjunto de 6 anéis com boneco de neve, estrela, Papai Noel, presente, rena e flocos. Perfeitos para a mesa da ceia.</p>
-        <span class="card__price">R$ 13,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20os%20An%C3%A9is%20de%20Guardanapo%20Natal%20(C%C3%B3digo%3A%200415)." class="card-wa" target="_blank" rel="noopener">
+        <span class="card__price">R$ 14,90</span>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Porta%20Guardanapo%20Natalino%20(C%C3%B3digo%3A%200415)." class="card-wa" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Quero esse!
         </a>
       </div>
     </article>
 
-    <!-- 2. Jesus -->
+    <!-- 2. Mini Jesus -->
     <article class="card anim-up d3">
       <div class="card__img-wrap">
-        <img src="Catálogo/2005-jesus.jpg" alt="Jesus" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/2005-jesus.jpg" alt="Mini Jesus" class="card__img" loading="lazy">
         <span class="card__code">2005</span>
       </div>
       <div class="card__body">
-        <h3 class="card__name">Jesus</h3>
+        <h3 class="card__name">Mini Jesus</h3>
         <p class="card__desc">Miniatura decorativa de Jesus com túnica branca e cabelos castanhos. Peça vendida individualmente. Ideal para presépios e decoração cristã.</p>
         <span class="card__price">R$ 10,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Jesus%20(C%C3%B3digo%3A%202005)." class="card-wa" target="_blank" rel="noopener">
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Mini%20Jesus%20(C%C3%B3digo%3A%202005)." class="card-wa" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Quero esse!
         </a>
@@ -1727,14 +1765,14 @@ body {
     <!-- 3. Papai Noel Tricô -->
     <article class="card anim-up d4">
       <div class="card__img-wrap">
-        <img src="Catálogo/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="card__img" loading="lazy">
         <span class="card__code">3225</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Papai Noel Tricô</h3>
         <p class="card__desc">Papai Noel em estilo amigurumi com textura de tricô, nas cores vermelha e branca e botinhas pretas. Fofo e compacto.</p>
         <span class="card__price">R$ 12,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Papai%20Noel%20Tric%C3%B4%20(C%C3%B3digo%3A%203225)." class="card-wa" target="_blank" rel="noopener">
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Papai%20Noel%20Tric%C3%B4%20(C%C3%B3digo%3A%203225)." class="card-wa" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Quero esse!
         </a>
@@ -1744,14 +1782,14 @@ body {
     <!-- 4. Presépio Sagrada Família -->
     <article class="card anim-up d5">
       <div class="card__img-wrap">
-        <img src="Catálogo/3625-presepio-sagrada-familia.jpg" alt="Presépio Sagrada Família" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/3625-presepio-sagrada-familia.jpg" alt="Presépio Sagrada Família" class="card__img" loading="lazy">
         <span class="card__code">3625</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Presépio Sagrada Família</h3>
         <p class="card__desc">Presépio minimalista em tom marfim com Maria, José e o Menino Jesus em linhas suaves e elegantes.</p>
         <span class="card__price">R$ 21,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Pres%C3%A9pio%20Sagrada%20Fam%C3%ADlia%20(C%C3%B3digo%3A%203625)." class="card-wa" target="_blank" rel="noopener">
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Pres%C3%A9pio%20Sagrada%20Fam%C3%ADlia%20(C%C3%B3digo%3A%203625)." class="card-wa" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Quero esse!
         </a>
@@ -1761,14 +1799,14 @@ body {
     <!-- 5. Biscoito de Gengibre -->
     <article class="card anim-up d6">
       <div class="card__img-wrap">
-        <img src="Catálogo/3639-biscoito-gengibre-personalizado.jpg" alt="Biscoito de Gengibre Personalizado" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/3639-biscoito-gengibre-personalizado.jpg" alt="Biscoito de Gengibre Personalizado" class="card__img" loading="lazy">
         <span class="card__code">3639</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Biscoito de Gengibre Personalizado</h3>
-        <p class="card__desc">Enfeite com gorro de Papai Noel, detalhes em glacê e flor natalina. Personalizável com nome e ano (2026).</p>
-        <span class="card__price">R$ 11,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Biscoito%20de%20Gengibre%20Personalizado%20(C%C3%B3digo%3A%203639)." class="card-wa" target="_blank" rel="noopener">
+        <p class="card__desc">Enfeite de árvore de Natal com gorro de Papai Noel, detalhes em glacê e flor natalina. Personalizável com nome e ano (2026).</p>
+        <span class="card__price">R$ 15,90</span>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Biscoito%20de%20Gengibre%20Personalizado%20(C%C3%B3digo%3A%203639)." class="card-wa" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Quero esse!
         </a>
@@ -1778,14 +1816,14 @@ body {
     <!-- 6. Boneco de Gengibre Tricô -->
     <article class="card anim-up d7">
       <div class="card__img-wrap">
-        <img src="Catálogo/4230-boneco-gengibre-trico.jpg" alt="Boneco de Gengibre Tricô" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/4230-boneco-gengibre-trico.jpg" alt="Boneco de Gengibre Tricô" class="card__img" loading="lazy">
         <span class="card__code">4230</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Boneco de Gengibre Tricô</h3>
         <p class="card__desc">Boneco sentado em estilo amigurumi, com textura de tricô, glacê branco e botões vermelhos. Charmoso e aconchegante.</p>
         <span class="card__price">R$ 8,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Boneco%20de%20Gengibre%20Tric%C3%B4%20(C%C3%B3digo%3A%204230)." class="card-wa" target="_blank" rel="noopener">
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Boneco%20de%20Gengibre%20Tric%C3%B4%20(C%C3%B3digo%3A%204230)." class="card-wa" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Quero esse!
         </a>
@@ -1795,140 +1833,144 @@ body {
     <!-- 7. Letreiro Feliz Natal -->
     <article class="card anim-up d2">
       <div class="card__img-wrap">
-        <img src="Catálogo/4684-letreiro-feliz-natal.jpg" alt="Letreiro Feliz Natal" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/4684-letreiro-feliz-natal.jpg" alt="Letreiro Feliz Natal" class="card__img" loading="lazy">
         <span class="card__code">4684</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Letreiro Feliz Natal</h3>
         <p class="card__desc">Letreiro decorativo em vermelho glitter com árvore de Natal e floco de neve integrados. Para mesa ou aparador.</p>
         <span class="card__price">R$ 15,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Letreiro%20Feliz%20Natal%20(C%C3%B3digo%3A%204684)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Letreiro%20Feliz%20Natal%20(C%C3%B3digo%3A%204684)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
       </div>
     </article>
 
     <!-- 8. Árvore de Natal -->
     <article class="card anim-up d3">
       <div class="card__img-wrap">
-        <img src="Catálogo/6140-arvore-natal.jpg" alt="Árvore de Natal" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/6140-arvore-natal.jpg" alt="Árvore de Natal" class="card__img" loading="lazy">
         <span class="card__code">6140</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Árvore de Natal</h3>
         <p class="card__desc">Árvore decorativa em dois tamanhos, com camadas de folhagem verde, estrela no topo e tronco em tons de madeira.</p>
         <span class="card__price">R$ 18,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20%C3%81rvore%20de%20Natal%20(C%C3%B3digo%3A%206140)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20%C3%81rvore%20de%20Natal%20(C%C3%B3digo%3A%206140)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
       </div>
     </article>
 
     <!-- 10. Grinch Cadeira -->
-    <article class="card anim-up d5">
+    <article class="card card--coming-soon anim-up d5">
       <div class="card__img-wrap">
-        <img src="Catálogo/6297-grinch-cadeira-vermelha.jpg" alt="Grinch na Cadeira Vermelha" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/6297-grinch-cadeira-vermelha.jpg" alt="Grinch na Cadeira Vermelha" class="card__img" loading="lazy">
         <span class="card__code">6297</span>
+        <span class="card__badge-soon" data-label="Em Breve"></span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Grinch na Cadeira Vermelha</h3>
         <p class="card__desc">Grinch sentado em sua poltrona clássica vermelha capitonê, com expressão travessa e pose pensativa.</p>
         <span class="card__price">R$ 24,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Grinch%20na%20Cadeira%20Vermelha%20(C%C3%B3digo%3A%206297)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20encomendar%20o%20Grinch%20na%20Cadeira%20Vermelha%20(C%C3%B3digo%3A%206297)." class="card-wa card-wa--encomenda" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Encomendar</a>
       </div>
     </article>
 
     <!-- 11. Urso Polar -->
     <article class="card anim-up d6">
       <div class="card__img-wrap">
-        <img src="Catálogo/6749-urso-polar.jpg" alt="Urso Polar" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/6749-urso-polar.jpg" alt="Urso Polar" class="card__img" loading="lazy">
         <span class="card__code">6749</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Urso Polar</h3>
-        <p class="card__desc">Ursos polares em 4 poses: sentado, acenando, em pé e dormindo. Disponível individual ou kit família.</p>
-        <span class="card__price">R$ 9,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Urso%20Polar%20(C%C3%B3digo%3A%206749)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <p class="card__desc">Ursos polares em 4 poses: sentado, acenando, em pé e dormindo. Kit com 4: R$ 39,90 ou individual R$ 11,90 cada.</p>
+        <span class="card__price">R$ 11,90</span>
+        <span class="card__price-kit">Kit 4 ursos: R$ 39,90</span>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Urso%20Polar%20(C%C3%B3digo%3A%206749)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
       </div>
     </article>
 
     <!-- 12. Boneco de Neve Tricô -->
-    <article class="card anim-up d7">
+    <article class="card card--coming-soon anim-up d7">
       <div class="card__img-wrap">
-        <img src="Catálogo/6757-boneco-neve-trico.jpg" alt="Boneco de Neve Tricô" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/6757-boneco-neve-trico.jpg" alt="Boneco de Neve Tricô" class="card__img" loading="lazy">
         <span class="card__code">6757</span>
+        <span class="card__badge-soon" data-label="Em Breve"></span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Boneco de Neve Tricô</h3>
         <p class="card__desc">Boneco de neve amigurumi com textura de tricô, cachecol vermelho, cartola preta, nariz de cenoura e braços de galho.</p>
-        <span class="card__price">R$ 25,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Boneco%20de%20Neve%20Tric%C3%B4%20(C%C3%B3digo%3A%206757)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <span class="card__price">R$ 23,90</span>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20encomendar%20o%20Boneco%20de%20Neve%20Tric%C3%B4%20(C%C3%B3digo%3A%206757)." class="card-wa card-wa--encomenda" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Encomendar</a>
       </div>
     </article>
 
     <!-- 13. Bandeja Natal -->
     <article class="card anim-up d2">
       <div class="card__img-wrap">
-        <img src="Catálogo/7159-bandeja-natal.jpg" alt="Bandeja Natal" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/7159-bandeja-natal.jpg" alt="Bandeja Natal" class="card__img" loading="lazy">
         <span class="card__code">7159</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Bandeja Natal</h3>
         <p class="card__desc">Bandeja oval decorativa com borda canelada em tom nude/bege. Perfeita para compor cenários natalinos.</p>
         <span class="card__price">R$ 14,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Bandeja%20Natal%20(C%C3%B3digo%3A%207159)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Bandeja%20Natal%20(C%C3%B3digo%3A%207159)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
       </div>
     </article>
 
     <!-- 14. Bandeja Aura -->
     <article class="card anim-up d3">
       <div class="card__img-wrap">
-        <img src="Catálogo/7212-bandeja-aura.jpg" alt="Bandeja Aura" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/7212-bandeja-aura.jpg" alt="Bandeja Aura" class="card__img" loading="lazy">
         <span class="card__code">7212</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Bandeja Aura</h3>
         <p class="card__desc">Bandeja oval com borda canelada em creme/off-white. Design clean e versátil para servir ou decorar.</p>
         <span class="card__price">R$ 18,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Bandeja%20Aura%20(C%C3%B3digo%3A%207212)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Bandeja%20Aura%20(C%C3%B3digo%3A%207212)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
       </div>
     </article>
 
     <!-- 15. Rena Inverno -->
     <article class="card anim-up d4">
       <div class="card__img-wrap">
-        <img src="Catálogo/7382-rena-inverno-cachecol.jpg" alt="Rena de Inverno com Cachecol" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/7382-rena-inverno-cachecol.jpg" alt="Rena de Inverno com Cachecol" class="card__img" loading="lazy">
         <span class="card__code">7382</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Rena de Inverno com Cachecol</h3>
         <p class="card__desc">Rena branca de linhas geométricas com cachecol de tricô. Design moderno e elegante em estilo escandinavo.</p>
         <span class="card__price">R$ 18,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Rena%20de%20Inverno%20com%20Cachecol%20(C%C3%B3digo%3A%207382)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Rena%20de%20Inverno%20com%20Cachecol%20(C%C3%B3digo%3A%207382)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
       </div>
     </article>
 
     <!-- 16. Grinch Sentado -->
-    <article class="card anim-up d5">
+    <article class="card card--coming-soon anim-up d5">
       <div class="card__img-wrap">
-        <img src="Catálogo/7396-grinch-sentado.jpg" alt="Grinch Sentado" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/7396-grinch-sentado.jpg" alt="Grinch Sentado" class="card__img" loading="lazy">
         <span class="card__code">7396</span>
+        <span class="card__badge-soon" data-label="Em Breve"></span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Grinch Sentado</h3>
         <p class="card__desc">Grinch vestido de Papai Noel, sentado com pernas cruzadas e caneca verde. A expressão marota clássica.</p>
         <span class="card__price">R$ 24,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Grinch%20Sentado%20(C%C3%B3digo%3A%207396)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20encomendar%20o%20Grinch%20Sentado%20(C%C3%B3digo%3A%207396)." class="card-wa card-wa--encomenda" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Encomendar</a>
       </div>
     </article>
 
     <!-- 17. Rena Pequena -->
     <article class="card anim-up d6">
       <div class="card__img-wrap">
-        <img src="Catálogo/8949-rena-natal-pequena-trico.jpg" alt="Rena de Natal Pequena Tricô" class="card__img" loading="lazy">
+        <img src="Catálogo/imagens/8949-rena-natal-pequena-trico.jpg" alt="Rena de Natal Pequena Tricô" class="card__img" loading="lazy">
         <span class="card__code">8949</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Rena de Natal Pequena Tricô</h3>
         <p class="card__desc">Rena pequena em estilo amigurumi com textura de tricô, chifres marrons e nariz vermelho brilhante. Compacta e encantadora.</p>
-        <span class="card__price">R$ 8,90</span>
-        <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Rena%20de%20Natal%20Pequena%20Tric%C3%B4%20(C%C3%B3digo%3A%208949)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
+        <span class="card__price">R$ 11,90</span>
+        <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Rena%20de%20Natal%20Pequena%20Tric%C3%B4%20(C%C3%B3digo%3A%208949)." class="card-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Quero esse!</a>
       </div>
     </article>
 
@@ -1940,7 +1982,7 @@ body {
       </div>
 
       <div class="kit-builder__example">
-        <img src="Catálogo/614008949-kit-arvore-rena.png" alt="Exemplo de Kit: Árvore + Rena na Bandeja" class="kit-builder__example-img">
+        <img src="Catálogo/imagens/614008949-kit-arvore-rena.png" alt="Exemplo de Kit: Árvore + Rena na Bandeja" class="kit-builder__example-img">
         <p class="kit-builder__example-caption">Sugestão de montagem</p>
       </div>
 
@@ -1950,7 +1992,7 @@ body {
 
       <div class="kit-builder__bandeja-fixa">
         <div class="kit-item selected">
-          <img src="Catálogo/7159-bandeja-natal.jpg" alt="Bandeja Natal" class="kit-item__img">
+          <img src="Catálogo/imagens/7159-bandeja-natal.jpg" alt="Bandeja Natal" class="kit-item__img">
           <div class="kit-item__info">
             <p class="kit-item__name">Bandeja Natal</p>
             <p class="kit-item__price-tag">R$ 14,90 · Inclusa no kit</p>
@@ -1962,7 +2004,7 @@ body {
       <p class="kit-builder__section-title" style="margin-top:14px;">Escolha 2 peças</p>
       <div class="kit-builder__produtos">
         <div class="kit-item" data-kit-name="Papai Noel Tricô" data-kit-price="12.90">
-          <img src="Catálogo/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="kit-item__img">
+          <img src="Catálogo/imagens/3225-papai-noel-trico.jpg" alt="Papai Noel Tricô" class="kit-item__img">
           <div class="kit-item__info">
             <p class="kit-item__name">Papai Noel Tricô</p>
             <p class="kit-item__price-tag">R$ 12,90</p>
@@ -1974,7 +2016,7 @@ body {
           </div>
         </div>
         <div class="kit-item" data-kit-name="Boneco de Gengibre Tricô" data-kit-price="8.90">
-          <img src="Catálogo/4230-boneco-gengibre-trico.jpg" alt="Boneco de Gengibre Tricô" class="kit-item__img">
+          <img src="Catálogo/imagens/4230-boneco-gengibre-trico.jpg" alt="Boneco de Gengibre Tricô" class="kit-item__img">
           <div class="kit-item__info">
             <p class="kit-item__name">Boneco Gengibre</p>
             <p class="kit-item__price-tag">R$ 8,90</p>
@@ -1985,8 +2027,8 @@ body {
             <button class="kit-qty-btn" onclick="changeQty(this,1)">+</button>
           </div>
         </div>
-        <div class="kit-item" data-kit-name="Boneco de Neve Tricô" data-kit-price="25.90">
-          <img src="Catálogo/6757-boneco-neve-trico.jpg" alt="Boneco de Neve Tricô" class="kit-item__img">
+        <div class="kit-item" data-kit-name="Boneco de Neve Tricô" data-kit-price="23.90">
+          <img src="Catálogo/imagens/6757-boneco-neve-trico.jpg" alt="Boneco de Neve Tricô" class="kit-item__img">
           <div class="kit-item__info">
             <p class="kit-item__name">Boneco de Neve</p>
             <p class="kit-item__price-tag">R$ 25,90</p>
@@ -1997,8 +2039,8 @@ body {
             <button class="kit-qty-btn" onclick="changeQty(this,1)">+</button>
           </div>
         </div>
-        <div class="kit-item" data-kit-name="Rena de Natal Tricô" data-kit-price="8.90">
-          <img src="Catálogo/8949-rena-natal-pequena-trico.jpg" alt="Rena de Natal Tricô" class="kit-item__img">
+        <div class="kit-item" data-kit-name="Rena de Natal Tricô" data-kit-price="11.90">
+          <img src="Catálogo/imagens/8949-rena-natal-pequena-trico.jpg" alt="Rena de Natal Tricô" class="kit-item__img">
           <div class="kit-item__info">
             <p class="kit-item__name">Rena Natal Tricô</p>
             <p class="kit-item__price-tag">R$ 8,90</p>
@@ -2010,7 +2052,7 @@ body {
           </div>
         </div>
         <div class="kit-item" data-kit-name="Árvore de Natal" data-kit-price="18.90">
-          <img src="Catálogo/6140-arvore-natal.jpg" alt="Árvore de Natal" class="kit-item__img">
+          <img src="Catálogo/imagens/6140-arvore-natal.jpg" alt="Árvore de Natal" class="kit-item__img">
           <div class="kit-item__info">
             <p class="kit-item__name">Árvore de Natal</p>
             <p class="kit-item__price-tag">R$ 18,90</p>
@@ -2043,9 +2085,9 @@ body {
     <h2 class="closing__title">Gostou de <span>alguma peça</span>?</h2>
     <p class="closing__sub">Entre em contato e faça seu pedido!</p>
     <div class="closing__buttons">
-      <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Vi%20o%20cat%C3%A1logo%20de%20Natal%202026%20e%20gostaria%20de%20fazer%20um%20pedido!" class="btn btn--orange" target="_blank" rel="noopener">
+      <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Vi%20o%20cat%C3%A1logo%20de%20Natal%202026%20e%20gostaria%20de%20fazer%20um%20pedido!" class="btn btn--orange" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp (16) 99708-6377
+        WhatsApp (16) 99993-0854
       </a>
       <a href="https://instagram.com/bmkstudio3d" class="btn btn--white" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -2062,7 +2104,7 @@ body {
     <p class="lojista__title">É lojista?</p>
     <p class="lojista__text">Quer ter um mostruário na sua loja?<br>Fale com a gente e saiba como revender!</p>
     <div class="lojista__btn">
-      <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Sou%20lojista%20e%20tenho%20interesse%20em%20ter%20um%20mostu%C3%A1rio%20BMK%20Studio%20na%20minha%20loja.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">
+      <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Sou%20lojista%20e%20tenho%20interesse%20em%20ter%20um%20mostu%C3%A1rio%20BMK%20Studio%20na%20minha%20loja.%20Podem%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Fale conosco sobre revenda
       </a>
@@ -2087,14 +2129,14 @@ body {
       </div>
       <p class="cta-card__title">Projetos Sob Medida</p>
       <p class="cta-card__text">Tem uma ideia especial? Criamos projetos personalizados exclusivos para você!</p>
-      <a href="https://wa.me/5516997086377?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20projeto%20personalizado%20sob%20medida.%20Podem%20me%20ajudar%3F" class="cta-card__link" target="_blank" rel="noopener">Solicitar orçamento →</a>
+      <a href="https://wa.me/5516999930854?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20projeto%20personalizado%20sob%20medida.%20Podem%20me%20ajudar%3F" class="cta-card__link" target="_blank" rel="noopener">Solicitar orçamento →</a>
     </div>
   </div>
 
   <footer class="page-footer">
     <p class="page-footer__section-title">Pedidos e Informações</p>
     <div class="page-footer__links">
-      <a href="https://wa.me/5516997086377" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>(16) 99708-6377</a>
+      <a href="https://wa.me/5516999930854" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>(16) 99993-0854</a>
       <a href="https://instagram.com/bmkstudio3d" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@bmkstudio3d</a>
     </div>
     <p class="page-footer__note" style="margin-top:8px;">Imagens ilustrativas · Tons podem variar de acordo com os materiais disponíveis</p>
@@ -2386,7 +2428,7 @@ function renderCart() {
     lines.push('');
   }
   lines.push(`Total: ${formatBRL(grandTotal)}`);
-  const waUrl = `https://wa.me/5516997086377?text=${encodeURIComponent(lines.join('\n'))}`;
+  const waUrl = `https://wa.me/5516999930854?text=${encodeURIComponent(lines.join('\n'))}`;
 
   totalsHtml += `<a class="cart-panel__wa" href="${waUrl}" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -2416,6 +2458,9 @@ document.querySelectorAll('.card').forEach(card => {
 
   const pid = codeEl.textContent.trim();
   card.dataset.productId = pid;
+
+  // Skip "Em Breve" cards — keep the Encomendar link, no cart controls
+  if (card.classList.contains('card--coming-soon')) return;
 
   const priceText = priceEl.textContent.replace('R$', '').replace(',', '.').trim();
   const name = nameEl.textContent;
@@ -2654,22 +2699,35 @@ document.querySelectorAll('.card').forEach(card => {
       `${prodPrice}`,
       '',
       'Do catálogo de Natal 2026 da BMK Studio 3D!',
-      'Peça o seu pelo WhatsApp: (16) 99708-6377',
+      'Peça o seu pelo WhatsApp: (16) 99993-0854',
       '@bmkstudio3d',
       '',
       `Veja o catálogo: ${window.location.href}`
     ].join('\n');
     overlay.querySelector('.card-overlay__wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMsg)}`;
 
-    // Add to cart button
+    // Add to cart or Encomendar button
     const addBtn = overlay.querySelector('#overlayAddBtn');
     const newBtn = addBtn.cloneNode(true);
     addBtn.replaceWith(newBtn);
     newBtn.id = 'overlayAddBtn';
-    newBtn.addEventListener('click', () => {
-      addToCart(prodCode, prodName, priceNum, img.src);
-      closeOverlay();
-    });
+
+    const isComingSoon = card.classList.contains('card--coming-soon');
+    if (isComingSoon) {
+      // Transform into "Encomendar" link
+      newBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Encomendar`;
+      newBtn.addEventListener('click', () => {
+        const msg = encodeURIComponent(`Olá! Quero encomendar o ${prodName} (Código: ${prodCode}).`);
+        window.open(`https://wa.me/5516999930854?text=${msg}`, '_blank');
+        closeOverlay();
+      });
+    } else {
+      newBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> Adicionar ao carrinho`;
+      newBtn.addEventListener('click', () => {
+        addToCart(prodCode, prodName, priceNum, img.src);
+        closeOverlay();
+      });
+    }
 
     overlay.classList.add('active');
   });
