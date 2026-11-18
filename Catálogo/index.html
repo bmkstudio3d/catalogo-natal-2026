@@ -2528,6 +2528,18 @@ function renderCart() {
 
   totalsEl.innerHTML = totalsHtml;
 
+  // Máscara de telefone (XX) XXXXX-XXXX
+  const telInput = document.getElementById('cartTel');
+  if (telInput) {
+    telInput.addEventListener('input', (e) => {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      else if (v.length > 0) v = `(${v}`;
+      e.target.value = v;
+    });
+  }
+
   // Attach click to WhatsApp button with validation
   const waBtn = document.getElementById('cartWaBtn');
   if (waBtn) {
@@ -2535,14 +2547,14 @@ function renderCart() {
       const nomeEl = document.getElementById('cartNome');
       const telEl = document.getElementById('cartTel');
       const nome = nomeEl.value.trim();
-      const tel = telEl.value.trim();
+      const tel = telEl.value.replace(/\D/g, '');
       let valid = true;
       nomeEl.classList.remove('cart-panel__input--error');
       telEl.classList.remove('cart-panel__input--error');
-      if (!nome) { nomeEl.classList.add('cart-panel__input--error'); valid = false; }
-      if (!tel) { telEl.classList.add('cart-panel__input--error'); valid = false; }
+      if (!nome || nome.split(/\s+/).length < 2) { nomeEl.classList.add('cart-panel__input--error'); valid = false; }
+      if (tel.length < 10) { telEl.classList.add('cart-panel__input--error'); valid = false; }
       if (!valid) return;
-      const fullLines = [`Nome: ${nome}`, `Telefone: ${tel}`, '', ..._webhookLines];
+      const fullLines = [`Nome: ${nome}`, `Telefone: ${telEl.value.trim()}`, '', ..._webhookLines];
       const waUrl = `https://wa.me/5516999930854?text=${encodeURIComponent(fullLines.join('\n'))}`;
       sendOrderWebhook(fullLines, _webhookTotal, _webhookEntries);
       window.open(waUrl, '_blank');
