@@ -2515,10 +2515,6 @@ function renderCart() {
     lines.push('');
   }
   lines.push(`Total: ${formatBRL(grandTotal)}`);
-  const _webhookLines = lines;
-  const _webhookTotal = grandTotal;
-  const _webhookEntries = entries;
-
   totalsHtml += `<div class="cart-panel__form">
     <input type="text" class="cart-panel__input" id="cartNome" placeholder="Nome Completo" autocomplete="name">
     <p class="cart-panel__error-msg" id="cartNomeErr">Preencha o nome completo.</p>
@@ -2560,38 +2556,11 @@ function renderCart() {
       if (!nome || nome.split(/\s+/).length < 2) { nomeEl.classList.add('cart-panel__input--error'); nomeErr.classList.add('visible'); valid = false; }
       if (tel.length < 10) { telEl.classList.add('cart-panel__input--error'); telErr.classList.add('visible'); valid = false; }
       if (!valid) return;
-      const fullLines = [`Nome: ${nome}`, `Telefone: ${telEl.value.trim()}`, '', ..._webhookLines];
+      const fullLines = [`Nome: ${nome}`, `Telefone: ${telEl.value.trim()}`, '', ...lines];
       const waUrl = `https://wa.me/5516999930854?text=${encodeURIComponent(fullLines.join('\n'))}`;
-      sendOrderWebhook(fullLines, _webhookTotal, _webhookEntries);
       window.open(waUrl, '_blank');
     });
   }
-}
-
-// Webhook — envia pedido em paralelo ao WhatsApp
-function sendOrderWebhook(orderLines, grandTotal, entries) {
-  const items = entries.map(([pid, item]) => ({
-    codigo: pid,
-    nome: item.name,
-    preco: item.price,
-    quantidade: item.qty,
-    subtotal: +(item.price * item.qty).toFixed(2),
-    isKit: !!item.isKit
-  }));
-  const payload = {
-    timestamp: new Date().toISOString(),
-    total: +grandTotal.toFixed(2),
-    itens: items,
-    resumo: orderLines.join('\n')
-  };
-  fetch('https://api2.cursor.sh/automations/webhook/d410e1b1-defb-5d84-bd79-cbb71005c745', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer crsr_d46cc32acede4486c13f298db4505c62114dda1516304db405708ff599bfb2c7'
-    },
-    body: JSON.stringify(payload)
-  }).then(r => console.log('Webhook:', r.status)).catch(e => console.error('Webhook erro:', e));
 }
 
 function openCart() {
