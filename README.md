@@ -58,6 +58,8 @@ Catálogo digital interativo da coleção de Natal 2026 da **BMK Studio 3D**, co
 | 7382 | Rena de Inverno com Cachecol | R$ 18,90 |
 | 7396 | Grinch Sentado | R$ 18,90 |
 | 8949 | Rena de Natal Pequena Tricô | R$ 11,90 |
+| 0395 | Urso Polar de Natal Tricô (Em Breve) | R$ 10,90 |
+| 4520 | Boneco de Neve Tricô Inverno (Em Breve) | R$ 10,90 |
 
 ## Descontos
 

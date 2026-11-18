@@ -44,6 +44,8 @@
 | 14 | Porta Guardanapo Natalino | 1h59 | 42 g | 4,38 | 13,14 | 14,90 | 10,52 | 240% |
 | 15 | Bandeja Aura | 1h17 | 63 g | 6,22 | 18,66 | 18,90 | 12,68 | 204% |
 | 16 | Grinch Cadeira Vermelha (placas 1, 2, 3) | 8h13 | 81 g | 8,32 | 24,96 | 24,90 | 16,58 | 199% |
+| 17 | Urso Polar de Natal Tricô | 2h42 | 29 g | 3,41 | 10,23 | 10,90 | 7,49 | 220% |
+| 18 | Boneco de Neve Tricô Inverno | 3h42 | 28 g | 3,30 | 9,90 | 10,90 | 7,60 | 230% |
 
 > **Critério de ajuste (psicologia de preços):** todos os preços foram arredondados para terminar em **,90** — o chamado *charm pricing*. O cérebro do consumidor ancora no dígito à esquerda: R$ 18,90 é percebido mais próximo de R$ 18 do que de R$ 19, gerando sensação de economia. O arredondamento foi sempre para cima, garantindo margem mínima de ~200%, com exceção dos produtos 7 e 16 que ficaram em 199% (diferença de centavos).
 
@@ -159,6 +161,20 @@
 - **Filamento: R$ 7,00** | Energia: R$ 0,47 | Perdas: R$ 0,35 | Embalagem: R$ 0,50
 - **Custo: R$ 8,32** | **Preço: R$ 24,96** | Lucro: R$ 16,64
 
+### 17. Urso Polar de Natal Tricô
+- Vermelho Velvet: 4 g × R$ 0,08536 = R$ 0,34
+- Preto Velvet: 1 g × R$ 0,09356 = R$ 0,09
+- Branco Velvet: 24 g × R$ 0,09107 = R$ 2,19
+- **Filamento: R$ 2,62** | Energia: R$ 0,16 | Perdas: R$ 0,13 | Embalagem: R$ 0,50
+- **Custo: R$ 3,41** | **Preço: R$ 10,90** | Lucro: R$ 7,49
+
+### 18. Boneco de Neve Tricô Inverno
+- Branco Velvet: 13 g × R$ 0,09107 = R$ 1,18
+- Vermelho Velvet: 14 g × R$ 0,08536 = R$ 1,20
+- Preto Velvet: 1 g × R$ 0,09356 = R$ 0,09
+- **Filamento: R$ 2,47** | Energia: R$ 0,21 | Perdas: R$ 0,12 | Embalagem: R$ 0,50
+- **Custo: R$ 3,30** | **Preço: R$ 10,90** | Lucro: R$ 7,60
+
 ---
 
 ## Descontos para kits
@@ -212,6 +228,8 @@ O desconto é aplicado sobre a **soma dos preços ajustados** dos produtos escol
 | 14 | Porta Guardanapo Natalino | 14,90 | 11,92 | 10,43 |
 | 15 | Bandeja Aura | 18,90 | 15,12 | 13,23 |
 | 16 | Grinch Cadeira Vermelha | 24,90 | 19,92 | 17,43 |
+| 17 | Urso Polar de Natal Tricô | 10,90 | 8,72 | 7,63 |
+| 18 | Boneco de Neve Tricô Inverno | 10,90 | 8,72 | 7,63 |
 
 > O preço final do kit é a soma dos preços com desconto de cada produto escolhido, arredondado para o ,90 mais próximo acima.
 
