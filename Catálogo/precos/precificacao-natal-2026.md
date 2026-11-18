@@ -37,15 +37,16 @@
 | 7 | Mini Jesus (placas 1, 2, 3, 5) | 3h04 | 31 g | 3,65 | 10,95 | 10,90 | 7,25 | 199% |
 | 8 | Papai Noel Tricô | 4h04 | 35 g | 4,00 | 12,00 | 12,90 | 8,90 | 223% |
 | 9 | Rena de cachecol | 2h38 | 63 g | 6,30 | 18,90 | 18,90 | 12,60 | 200% |
-| 10 | Bandeja para exposição | 1h27 | 47 g | 4,79 | 14,37 | 14,90 | 10,11 | 211% |
+| 10 | ~~Bandeja para exposição~~ (removida) | — | — | — | — | — | — | — |
 | 11 | Letreiro Feliz Natal | 2h39 | 49 g | 5,04 | 15,12 | 15,90 | 10,86 | 215% |
 | 12 | Boneco de Gengibre | 3h18 | 25 g | 2,95 | 8,85 | 8,90 | 5,95 | 202% |
 | 13 | Enfeite Biscoito Personalizado | 2h01 | 34 g | 3,70 | 11,10 | 15,90 | 12,20 | 330% |
 | 14 | Porta Guardanapo Natalino | 1h59 | 42 g | 4,38 | 13,14 | 14,90 | 10,52 | 240% |
-| 15 | Bandeja Aura | 1h17 | 63 g | 6,22 | 18,66 | 18,90 | 12,68 | 204% |
+| 15 | ~~Bandeja Aura~~ (removida) | — | — | — | — | — | — | — |
 | 16 | Grinch Cadeira Vermelha (placas 1, 2, 3) | 8h13 | 81 g | 8,32 | 24,96 | 24,90 | 16,58 | 199% |
 | 17 | Urso Polar de Natal Tricô | 2h42 | 29 g | 3,41 | 10,23 | 10,90 | 7,49 | 220% |
 | 18 | Boneco de Neve Tricô Inverno | 3h42 | 28 g | 3,30 | 9,90 | 10,90 | 7,60 | 230% |
+| 19 | Bandeja Elegante | 1h54 | 40 g | 4,19 | 12,57 | 12,90 | 8,71 | 208% |
 
 > **Critério de ajuste (psicologia de preços):** todos os preços foram arredondados para terminar em **,90** — o chamado *charm pricing*. O cérebro do consumidor ancora no dígito à esquerda: R$ 18,90 é percebido mais próximo de R$ 18 do que de R$ 19, gerando sensação de economia. O arredondamento foi sempre para cima, garantindo margem mínima de ~200%, com exceção dos produtos 7 e 16 que ficaram em 199% (diferença de centavos).
 
@@ -117,10 +118,7 @@
 - **Filamento: R$ 5,38** | Energia: R$ 0,15 | Perdas: R$ 0,27 | Embalagem: R$ 0,50
 - **Custo: R$ 6,30** | **Preço: R$ 18,90** | Lucro: R$ 12,60
 
-### 10. Bandeja para exposição
-- Marrom Cappuccino Velvet: 47 g × R$ 0,08536 = R$ 4,01
-- **Filamento: R$ 4,01** | Energia: R$ 0,08 | Perdas: R$ 0,20 | Embalagem: R$ 0,50
-- **Custo: R$ 4,79** | **Preço: R$ 14,37** | Lucro: R$ 9,58
+### 10. ~~Bandeja para exposição~~ (removida do catálogo)
 
 ### 11. Letreiro Feliz Natal
 - Vermelho Velvet: 49 g × R$ 0,08536 = R$ 4,18
@@ -148,10 +146,7 @@
 - **Filamento: R$ 3,59** | Energia: R$ 0,11 | Perdas: R$ 0,18 | Embalagem: R$ 0,50
 - **Custo: R$ 4,38** | **Preço: R$ 14,90** | Lucro: R$ 10,52
 
-### 15. Bandeja Aura
-- Marrom Cappuccino Velvet: 63 g × R$ 0,08536 = R$ 5,38
-- **Filamento: R$ 5,38** | Energia: R$ 0,07 | Perdas: R$ 0,27 | Embalagem: R$ 0,50
-- **Custo: R$ 6,22** | **Preço: R$ 18,66** | Lucro: R$ 12,44
+### 15. ~~Bandeja Aura~~ (removida do catálogo)
 
 ### 16. Grinch Cadeira Vermelha (placas 1, 2 e 3)
 - Marrom Cappuccino Velvet (cadeira): 33 g × R$ 0,08536 = R$ 2,82
@@ -175,6 +170,11 @@
 - **Filamento: R$ 2,47** | Energia: R$ 0,21 | Perdas: R$ 0,12 | Embalagem: R$ 0,50
 - **Custo: R$ 3,30** | **Preço: R$ 10,90** | Lucro: R$ 7,60
 
+### 19. Bandeja Elegante
+- Marrom Cappuccino Velvet: 40 g × R$ 0,08536 = R$ 3,41
+- **Filamento: R$ 3,41** | Energia: R$ 0,11 | Perdas: R$ 0,17 | Embalagem: R$ 0,50
+- **Custo: R$ 4,19** | **Preço: R$ 12,57** | Lucro: R$ 8,38
+
 ---
 
 ## Descontos para kits
@@ -183,17 +183,17 @@ O desconto é aplicado sobre a **soma dos preços ajustados** dos produtos escol
 
 | Kit | Composição | Desconto |
 |---|---|---|
-| Kit Bandeja | 1 bandeja (produto 10 ou 15) + 2 produtos à escolha | 20% |
+| Kit Bandeja | 1 Bandeja Elegante (produto 19) + 2 produtos à escolha | 20% |
 | Kit Natal 3 peças | 3 produtos à escolha | 20% |
 | Kit Natal 5 peças | 5 produtos à escolha | 30% |
 
 ### Exemplos de kits
 
-**Kit Bandeja:** Bandeja para exposição + Rena Tricotada + Papai Noel Tricô
-- Soma dos preços: R$ 14,90 + R$ 11,90 + R$ 12,90 = R$ 39,70
-- Desconto 20%: − R$ 7,94
-- **Preço do kit: R$ 31,76** → ajustado: **R$ 31,90**
-- Custo total: R$ 11,78 | Lucro: R$ 20,12 | Margem: 171%
+**Kit Bandeja:** Bandeja Elegante + Rena Tricotada + Papai Noel Tricô
+- Soma dos preços: R$ 12,90 + R$ 11,90 + R$ 12,90 = R$ 37,70
+- Desconto 20%: − R$ 7,54
+- **Preço do kit: R$ 30,16** → ajustado: **R$ 30,90**
+- Custo total: R$ 10,98 | Lucro: R$ 19,92 | Margem: 181%
 
 **Kit Natal 3 peças:** Rena Tricotada + Papai Noel Tricô + Boneco de Gengibre
 - Soma dos preços: R$ 11,90 + R$ 12,90 + R$ 8,90 = R$ 33,70
@@ -221,15 +221,16 @@ O desconto é aplicado sobre a **soma dos preços ajustados** dos produtos escol
 | 7 | Mini Jesus | 10,90 | 8,72 | 7,63 |
 | 8 | Papai Noel Tricô | 12,90 | 10,32 | 9,03 |
 | 9 | Rena de cachecol | 18,90 | 15,12 | 13,23 |
-| 10 | Bandeja para exposição | 14,90 | 11,92 | 10,43 |
+| 10 | ~~Bandeja para exposição~~ (removida) | — | — | — |
 | 11 | Letreiro Feliz Natal | 15,90 | 12,72 | 11,13 |
 | 12 | Boneco de Gengibre | 8,90 | 7,12 | 6,23 |
 | 13 | Enfeite Biscoito Personalizado | 15,90 | 12,72 | 11,13 |
 | 14 | Porta Guardanapo Natalino | 14,90 | 11,92 | 10,43 |
-| 15 | Bandeja Aura | 18,90 | 15,12 | 13,23 |
+| 15 | ~~Bandeja Aura~~ (removida) | — | — | — |
 | 16 | Grinch Cadeira Vermelha | 24,90 | 19,92 | 17,43 |
 | 17 | Urso Polar de Natal Tricô | 10,90 | 8,72 | 7,63 |
 | 18 | Boneco de Neve Tricô Inverno | 10,90 | 8,72 | 7,63 |
+| 19 | Bandeja Elegante | 12,90 | 10,32 | 9,03 |
 
 > O preço final do kit é a soma dos preços com desconto de cada produto escolhido, arredondado para o ,90 mais próximo acima.
 

@@ -53,8 +53,7 @@ Catálogo digital interativo da coleção de Natal 2026 da **BMK Studio 3D**, co
 | 6297 | Grinch na Cadeira Vermelha | R$ 25,90 |
 | 6749 | Urso Polar (individual / Kit 4: R$ 39,90) | R$ 11,90 |
 | 6757 | Boneco de Neve Tricô (Em Breve) | R$ 23,90 |
-| 7159 | Bandeja Natal | R$ 14,90 |
-| 7212 | Bandeja Aura | R$ 14,90 |
+| 3680 | Bandeja Elegante | R$ 12,90 |
 | 7382 | Rena de Inverno com Cachecol | R$ 18,90 |
 | 7396 | Grinch Sentado | R$ 18,90 |
 | 8949 | Rena de Natal Pequena Tricô | R$ 11,90 |
@@ -65,7 +64,7 @@ Catálogo digital interativo da coleção de Natal 2026 da **BMK Studio 3D**, co
 
 | Condição | Desconto |
 |----------|----------|
-| Kit Natal (Bandeja + 2 peças) | **20% OFF** no kit |
+| Kit Natal (Bandeja Elegante + 2 peças) | **20% OFF** no kit |
 | Compra de 3 peças avulsas | **20% OFF** nos avulsos |
 | Compra de 5+ peças avulsas | **30% OFF** nos avulsos |
 

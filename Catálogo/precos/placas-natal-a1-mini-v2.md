@@ -75,7 +75,7 @@ Arquivo: *Sem AMS Altura 10cm* · **Total: 6h31 · 80 g**
 | 2 | Marrom (#6F5034) | PLA Marrom Cappuccino Velvet High Speed Premium | 34 min | 4 g | 0,4 mm |
 | 3 | Vermelho (#C12E1F) | PLA Vermelho Velvet High Speed Premium | 1h35 | 18 g | 0,4 mm |
 | 4 | Preto (#000000) | PLA Preto Velvet High Speed Premium | 1h56 | 21 g | 0,4 mm |
-| 5 | Laranja (#FF6A13) | PLA Branco Velvet High Speed Premium | 14 min | 1 g | 0,4 mm |
+| 5 | Branco (#FFFFFF) | PLA Branco Velvet High Speed Premium | 14 min | 1 g | 0,4 mm |
 
 ---
 
@@ -197,3 +197,13 @@ Arquivo: *Olhos coloridos (Usa AMS)* · **Total: 11h32 · 113 g**
 | 4 (Grinch, orientação alternativa) | Verde (#00AE42) 21 g + Branco (#FFFFFF) 8 g + Marrom (#6F5034) 3 g | PLA Verde Oliva Velvet High Speed Premium + PLA Branco Velvet High Speed Premium + PLA Marrom Velvet High Speed Premium | 3h18 | 32 g | 0,4 mm |
 
 > O primeiro arquivo da lista **usa AMS**, porque as placas 2 e 4 têm 3 cores. A placa 4 é uma alternativa à placa 2, então na prática o total fica em torno de **8h15 e 81 g**.
+
+---
+
+## 19. Bandeja Elegante · Código 2483680
+Link Bambu: https://makerworld.com/models/2483680
+Arquivo: *Bandeja Elegante* · **Total: 1h54 · 40 g**
+
+| Placa | Cor | Filamento real | Tempo | Quantidade | Bico |
+|---|---|---|---|---|---|
+| 1 | Cappuccino (#D2B48C) | PLA Marrom Cappuccino Velvet High Speed Premium | 1h54 | 40 g | 0,4 mm |
